@@ -1,0 +1,133 @@
+\documentclass[UTF8]{ctexart}
+\usepackage[table]{xcolor}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{subfigure}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fancybox}
+%\usepackage{xcolor}
+%\usepackage{colortbl}
+\usepackage{diagbox}
+\usepackage{amssymb}
+\usepackage{warpcol}
+\usepackage{lscape}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{longtable,booktabs}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+
+
+\lstset{
+columns=flexible,
+numbers=left,
+numberstyle=\footnotesize\color{darkgray}, 
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color[RGB]{40,40,255}\bfseries,
+commentstyle=\it\color[RGB]{0,96,96},  
+stringstyle=\rmfamily\slshape\color[RGB]{128,0,0}, 
+showstringspaces=false,      
+% directivestyle=\color{blue},
+frame=shadowbox,
+%framerule=0pt,
+backgroundcolor=\color[RGB]{245,245,244},
+escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+breaklines,
+extendedchars=false,
+%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+xleftmargin=2em,xrightmargin=2em,
+aboveskip=1em,%设置边距
+tabsize=4, %设置tab空格数  
+showspaces=false %不显示空格 
+rulesepcolor=\color{red!20!green!20!blue!20}
+%rulesepcolor=\color{brown}
+}
+
+\title{\heiti 最优化第十三次作业}
+\author{\kaishu 张晋15091060}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[5.22]
+\begin{enumerate}
+\item
+由$f$连续可微且严格凸可知:
+\[g[x^{(k+1)}]> g[x^{(k)}]+\nabla^2f(x^{(k)})[x^{(k+1)}-x^{(k)}]\]
+于是有:
+\begin{align}
+{s^{(k)}}^Ty^{(k)}&=[x^{(k+1)}-x^{(k)}][g^{(k+1)}-g^{(k)}]\\
+&>[x^{(k+1)}-x^{(k)}]^T\nabla^2f(x^{(k)})[x^{(k+1)}-x^{(k)}]>0
+\end{align}
+\item 
+设$f(x)=-x^2+\dfrac{7}{4}x-1$,其满足$f(0)=-1,f(1)=-1/4$,且$g(x)=-2x+\dfrac{7}{4},\quad s^{(k)}=1-0=1,\quad y^{(k)}=g(1)-g(0)=-2,\quad {s^{(k)}}^Ty^{(k)}=-2<0.$
+\end{enumerate}
+
+\item[5.23] Matlab程序结果运行如下，验证了题干命题：
+
+\begin{lstlisting}[language=Octave]
+step =
+     2
+
+x =
+     0
+     0
+
+ans =
+     0
+
+H =
+    0.0500   -0.0000
+   -0.0000    0.5000
+\end{lstlisting}
+
+\newpage
+代码如下:
+\begin{lstlisting}[language=Octave]
+%   5.23:   精确步长的DFP法
+clc;
+clear;
+N=200;
+step=0;
+x=[0.1,1]';
+H=eye(2);
+e=0.000001;
+g=gg(x);
+G=[20,0;0,2];
+while (norm(g)>e  && step < N) 
+	step=step+1;
+	p=-H*g;
+	s=Alpha(p,g,G)*p;
+	y=gg(x+s)-g;
+	x=x+s;
+	g=gg(x);
+	H=H_update(H,s,y);
+end
+step
+x
+f(x)
+H
+
+function y=f(x)
+y=10*x(1)^2+x(2)^2;
+end
+function y=gg(x)
+y=[20*x(1),2*x(2)]';
+end
+function h=H_update(H,s,y)
+h=H+(s*s')/(s'*y)-(H*y*y'*H)/(y'*H*y);
+end 
+function a=Alpha(p,g,G)
+a=-(p'*g)/(p'*G*p);
+a=double(a);
+end
+\end{lstlisting}
+\end{enumerate}
+\end{document}

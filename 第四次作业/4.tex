@@ -1,0 +1,413 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{booktabs}
+\title{\heiti 最优化第四次作业}
+\author{\kaishu 张晋15091060}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[2.11] 
+其单纯形表如下:
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 3     & 0     & 1     & 1     & 0     & 0     & 4 \\
+    {}    & \boxed{2}     & 1     & 0     & 0     & 0     & 1     & 0     & 3 \\
+    {}    & 0     & 1     & 4     & 1     & 0     & 0     & 1     & 3 \\
+    $\bm{r}^T$    & -2    & -4    & -1    & -1    & 0     & 0     & 0     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 0     & \boxed{5/2}   & 0     & 1     & 1     & -1/2  & 0     & 5/2 \\
+    {}    & 1     & 1/2   & 0     & 0     & 0     & 1/2   & 0     & 3/2 \\
+    {}    & 0     & 1     & 4     & 1     & 0     & 0     & 1     & 3 \\
+    $\bm{r}^T$     & 0     & -3    & -1    & -1    & 0     & 1     & 0     & 3 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 0     & 1     & 0     & 2/5   & 2/5   & -1/5  & 0     & 1 \\
+    {}    & 1     & 0     & 0     & -1/5  & -1/5  & 3/5   & 0     & 1 \\
+    {}    & 0     & 0     & \boxed{4}     & 3/5   & -2/5  & 1/5   & 1     & 2 \\
+    $\bm{r}^T$    & 0     & 0     & -1    & 1/5   & 6/5   & 2/5   & 0     & 6 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 0     & 1     & 0     & 2/5   & 2/5   & -1/5  & 0     & 1 \\
+    {}    & 1     & 0     & 0     & -1/5  & 1/5   & 3/5   & 0     & 1 \\
+    {}    & 0     & 0     & 1     & 3/20  & -1/10 & 1/20  & 1/4   & 1/2 \\
+    $\bm{r}^T$    & 0     & 0     & 0     & 7/20  & 11/10 & 9/20  & 1/4   & 13/2 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+利用单纯形法求得最优解为$\bm{x}^{\star}=(1,1,1/2,0)^T$,观察最后一张单纯形表的最后三列可得最优基$\bm{B}$的逆:
+
+\[\bm{B}^{-1}=\begin{bmatrix}
+    2/5   & -1/5  & 0 \\
+    -1/5  & 3/5   & 0 \\
+    -1/10 & 1/20  & 1/4 
+\end{bmatrix}\]
+
+\begin{enumerate}
+\item[(a)] 设$\Delta\bm{b}=(\delta,0,0)^T$,
+由于$\Delta\bm{b}$的变化不影响
+$\bm{c}^T_{N}\bm{N}-\bm{c}^T_B\bm{B}^{-1}\bm{N}\geq\bm{0}$,
+所以只要满足$\bm{B}^{-1}(\bm{b}+\Delta \bm{b})\geq \bm{0}$即可,即:
+
+\[
+\begin{bmatrix}
+   1\\
+   1 \\
+   1/2
+\end{bmatrix}+
+\begin{bmatrix}
+    2/5   & -1/5  & 0 \\
+    -1/5  & 3/5   & 0 \\
+    -1/10 & 1/20  & 1/4 
+\end{bmatrix}
+\begin{bmatrix}
+   \delta\\
+   0\\
+   0
+\end{bmatrix}=
+\begin{bmatrix}
+   1+2/5\delta\\
+   1-1/5\delta\\
+   1/2-1/10\delta
+\end{bmatrix}
+\geq \bm{0}
+\]
+
+解得$\delta \in [-5/2,5],\quad b_1\in [3/2,9]$.
+
+\item[(b)] 若$c_1$发生变动，属于基变量系数改变,需要满足
+$\bm{r}^T_N \geq \Delta\bm{c}^T_B\bm{B}^{-1}\bm{N}$,
+即
+\[[7/20,11/10,9/20,1/4] \geq [−1/5,−1/5,3/5,0 ]\Delta c_1\]
+
+解得:$\Delta c_1 \in [-7/4,3/4],\quad c_1=2-\Delta c_1 \in [5/4,15/4]$
+
+
+若$c_4$发生变动，属于非基变量系数改变,需要满足
+$\bm{r}^T_N \geq -\Delta\bm{c}^T_N$,
+即$7/20\geq -\Delta c_4$
+
+解得:$\Delta c_4 \in [-7/20,\infty),\quad c_4=1-\Delta c_4 \in (-\infty,27/20]$
+
+\item[(c)] 因为$\bm{B}^{-1}\bm{b}>0$,故当$\bm{b}$变化很微小时,新的基本解为$\bm{x}'=\bm{x}^{\star}+\bm{B}^{-1}\Delta\bm{b}$仍可行且最优.
+
+\item[(d)] 当$\bm{c}$发生微小的改变时,原解依旧为可行解,若需要为最优，则需满足$\bm{r}^T_N \geq \Delta\bm{c}^T_B\bm{B}^{-1}\bm{N}-\Delta\bm{c}^T_N$
+故当$\bm{b}$变化足够小时,原解满足最优性.
+
+最优值的变化为
+$-\Delta \bm{c}^T\bm{x}^{\star}=-\Delta \bm{c}^T_B\bm{x}^{\star}_B=-\Delta c_1-\Delta c_2-\frac{1}{2}\Delta c_3$
+
+\end{enumerate}
+
+
+
+
+\item[2.12]
+\begin{enumerate}
+\item[(a)] 单纯形表如下:
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}   & 3     & −1    & 2     & 1     & 0     & 0     & 7 \\
+    {}    & −2    & \boxed{4}     & 0     & 0     & 1     & 0     & 12 \\
+    {}    & −4    & 3     & 3     & 0     & 0     & 1     & 14 \\
+     $\bm{r}^T$  & 1     & −3    & −0.4  & 0     & 0     & 0     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+     {}    & \boxed{5/2}   & 0     & 2     & 1     & 1/4   & 0     & 10 \\
+    {}    & −1/2  & 1     & 0     & 0     & 1/4   & 0     & 3 \\
+     {}    & −5/4  & 0     & 3     & 0     & −3/4  & 1     & 5 \\
+     $\bm{r}^T$     & −1/2  & 0     & −0.4  & 0     & 3/4   & 0     & 9 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}     & 1     & 0     & 4/5   & 2/5   & 1/10  & 0     & 4 \\
+    {}     & 0     & 1     & 2/5   & 1/5   & 3/10  & 0     & 5 \\
+    {}     & 0     & 0     & 5     & 1     & −1/2  & 1     & 15 \\
+    $\bm{r}^T$    & 0     & 0     & 0     & 1/5   & 4/5   & 0     & 11 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+找到了一个最优解$(4,5,0)^T$,最优值为$-11$
+
+\item[(b)] 因为$r_3$,故可令$x_3$进基,$x_6$出基,得
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 0     & 0     & 6/25  & 9/50  & −4/25 & 8/5 \\
+    {}    & 0     & 1     & 0     & 3/25  & 8/25  & −2/25 & 19/5 \\
+    {}    & 0     & 0     & 1     & 1/5   & −1/10 & 1/5   & 3 \\
+      $\bm{r}^T$    & 0     & 0     & 0     & 1/5   & 4/5   & 0     & 11 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+此时得另一个最优解$(8/5,19/5,3)^T$,最优值为$-11$.
+
+此时$\bm{r}_N$中只有$r_6=0$,若$x_6$进基则得原解，故最优解一共只有2个.
+
+\item[(c)]
+由最后一张单纯形表可得:
+\[\bm{B}^{-1}=\begin{bmatrix}
+    2/5   & 1/10  & 0 \\
+    1/5  & 3/10   & 0 \\
+    1/5 & -1/2  & 1 
+\end{bmatrix}\]
+
+\[r_4=c_4-\bm{c}_B^T\bm{B}^{-1}\bm{a}_4=c_4+\dfrac{1}{5}a_{14}+\dfrac{4}{5}a_{24} \geq 0\]
+故新增一个既约系数为0的列向量,单纯形表的最优值不变,原解依旧为最优解.
+\end{enumerate}
+
+\newpage
+\item[2.16] 引入人工变量$y_1,y_2,y_3,y_4$，构造辅助问题:
+\begin{alignat}{2}
+min \quad & y_1+y_2+y_3+y_4 \nonumber\\
+\mbox{s.t.}\quad
+&x_1+2x_2+x_4+y_1=6\nonumber\\
+&x_1+2x_2+x_3+x_4+y_2=7\nonumber\\
+&x_1+3x_2-x_3+2x_4+y_3=7\nonumber\\
+&x_1+x_2+x_3+y_4=5\nonumber\\
+&x_i,y_i\geq 0\quad(i=1,2,3,4)
+\end{alignat}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$y_1$&$y_2$&$y_3$&$y_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+   {}    & 1     & 2     & 0     & 1     & 1     & 0     & 0     & 0     & 6 \\
+   {}    & 1     & 2     & 1     & 1     & 0     & 1     & 0     & 0     & 7 \\
+   {}    & 1     & 3     & −1    & 2     & 0     & 0     & 1     & 0     & 7 \\
+  {}    & 1     & 1     & 1     & 0     & 0     & 0     & 0     & 1     & 5 \\
+   $\bm{r}^T$    & 0     & 0     & 0     & 0     & 1     & 1     & 1     & 1     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$y_1$&$y_2$&$y_3$&$y_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+   {}    & 1     & 2     & 0     & 1     & 1     & 0     & 0     & 0     & 6 \\
+   {}    & 1     & 2     & 1     & 1     & 0     & 1     & 0     & 0     & 7 \\
+   {}    & 1     & \boxed{3}     & −1    & 2     & 0     & 0     & 1     & 0     & 7 \\
+   {}    & 1     & 1     & 1     & 0     & 0     & 0     & 0     & 1     & 5 \\
+    $\bm{r}^T$     & -4     & -8     & -1     & -4     & 0     & 0     & 0     & 0     & -25 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$y_1$&$y_2$&$y_3$&$y_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1/3   & 0     & 2/3   & −1/3  & 1     & 0     & −2/3  & 0     & 4/3 \\
+    {}    & 1/3   & 0     & \boxed{5/3}   & −1/3  & 0     & 1     & −2/3  & 0     & 7/3 \\
+    {}    & 1/3   & 1     & −1/3  & 2/3   & 0     & 0     & 1/3   & 0     & 7/3 \\
+    {}    & 2/3   & 0     & 4/3   & −2/3  & 0     & 0     & −1/3  & 1     & 8/3 \\
+     $\bm{r}^T$    & −4/3  & 0     & −11/3 & 4/3   & 0     & 0     & 8/3   & 0     & −19/3 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$y_1$&$y_2$&$y_3$&$y_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & \boxed{1/5}   & 0     & 0     & −1/5  & 1     & −2/5  & −2/5  & 0     & 2/5 \\
+    {}    & 1/5   & 0     & 1     & −1/5  & 0     & 3/5   & −2/5  & 0     & 7/5 \\
+    {}    & 2/5   & 1     & 0     & 3/5   & 0     & 1/5   & 1/5   & 0     & 14/5 \\
+    {}   & 2/5   & 0     & 0     & −2/5  & 0     & −4/5  & 1/5   & 1     & 4/5 \\
+     $\bm{r}^T$    & −3/5  & 0     & 0     & 3/5   & 0     & 11/5  & 6/5   & 0     & −6/5 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$y_1$&$y_2$&$y_3$&$y_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 0     & 0     & −1    & 5     & −2    & −2    & 0     & 2 \\
+   {}    & 0     & 0     & 1     & 0     & −1    & 1     & 0     & 0     & 1 \\
+   {}    & 0     & 1     & 0     & 1     & −2    & 1     & 1     & 0     & 2 \\
+    {}    & 0     & 0     & 0     & 0     & −2    & 0     & 1     & 1     & 0 \\
+    $\bm{r}^T$   & 0     & 0     & 0     & 0     & 3     & 1     & 0     & 0     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\clearpage
+将以上求得的解作为初始解开始迭代:
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+   {}     & 1     & 0     & 0     & −1    & 2 \\
+    {}   & 0     & 0     & 1     & 0     & 1 \\
+   {}    & 0     & 1     & 0     & 1     & 2 \\
+ $\bm{r}^T$    & 2     & 6     & 1     & 1     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+   {}     & 1     & 0     & 0     & −1    & 2 \\
+    {}   & 0     & 0     & 1     & 0     & 1 \\
+   {}    & 0     & 1     & 0     & \boxed{1 }    & 2 \\
+ $\bm{r}^T$    & 0     & 0    & 0    & -3   & -17 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+	\begin{tabular}{cccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 1     & 0     & 0     & 4 \\
+    {}    & 0     & 0     & 1     & 0     & 1 \\
+    {}    & 0     & 1     & 0     & 1     & 2 \\
+$\bm{r}^T$    & 0     & 3     & 0     & 0     & −11 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+此时求得最优解$(4,0,1,2)^T$,最优值为11.
+
+\clearpage
+\item[2.19] 
+\begin{enumerate}
+\item[(a)] 下一个转轴元为第2行第3列的\boxed{3}.
+\item[(b)] 
+
+\[\bm{B}=(\bm{B}^{-1})^{-1}=\begin{bmatrix}
+    2   & 1  & 0 \\
+    1  & 1   & 0 \\
+    0 & 1  & 1 
+\end{bmatrix}\]
+
+\[\bm{b}=\bm{B}\bm{y}_0=
+\begin{bmatrix}
+    10 \\
+    6 \\
+    4
+\end{bmatrix}\]
+
+\[\bm{N}=\bm{B}[\bm{y}_2,\bm{y}_3,\bm{y}_5]=
+\begin{bmatrix}
+    1  & 3  & 2 \\
+    0  & -2   & 2 \\
+    -3 & 1  & 0 
+\end{bmatrix}\]
+
+\[\bm{A}=
+\begin{bmatrix}
+    2     & −1    & 3     & 1     & 2     & 0 \\
+    1     & 0     & −2    & 0     & 2     & 1 \\
+    0     & −3    & 1     & 1     & 0     & 1 
+\end{bmatrix}\]
+
+\[\begin{bmatrix}
+    c_2 \\
+    c_3  \\
+    c_5
+\end{bmatrix}=\bm{c}^T_{N}=
+\bm{r}^T_{N}+\bm{c}^T_B\bm{B}^{-1}\bm{N}=
+\begin{bmatrix}
+    25/3 \\
+    -22  \\
+    8/3 
+\end{bmatrix}
+\]
+\[\bm{c}=
+\begin{bmatrix}
+-1\\
+    25/3 \\
+    -22  \\
+-3\\
+    8/3 \\
+    1
+\end{bmatrix}
+\]
+在mathematica输入如下代码:
+\text{Show}\left[\text{RegionPlot}[x+y\geq -6\land x+2 y\geq -8,\{x,-4,0\},\{y,-3,0\},\text{PlotLegends}\to \text{Expressions}],\text{Plot}\left[\left\{-\frac{2 x}{3}-\frac{14}{3}\right\},\{x,-4,0\},\text{PlotLegends}\to \text{Expressions},\text{PlotStyle}\to \{\text{Red}\}\right],\text{Plot}\left[\left\{-\frac{2 x}{3}-3\right\},\{x,-4,0\},\text{PlotLegends}\to \text{Expressions},\text{PlotStyle}\to \{\text{Green}\}\right]\right]
+\end{enumerate}
+\end{enumerate}
+\end{document}

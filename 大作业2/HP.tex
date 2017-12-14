@@ -1,0 +1,72 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{algorithm}
+\usepackage{amsmath,bm}
+\usepackage{fancybox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{diagbox}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{mathtools}
+\usepackage{fancyhdr}                                
+\usepackage{lastpage}                                           
+\usepackage{layout} 
+
+
+% 图表
+\usepackage{array,multirow}
+  \setlength\extrarowheight{2pt} % 行高增加
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{listings}
+
+\usepackage{xcolor}
+
+	\definecolor{ocre}{RGB}{243,102,25}
+	\definecolor{mygray}{RGB}{243,243,244}
+
+
+\lstset{
+columns=flexible,
+numbers=left,
+numberstyle=\footnotesize\color{darkgray}, 
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color[RGB]{40,40,255}\bfseries,
+commentstyle=\it\color[RGB]{0,96,96},  
+stringstyle=\rmfamily\slshape\color[RGB]{128,0,0}, 
+showstringspaces=false,      
+% directivestyle=\color{blue},
+frame=shadowbox,
+%framerule=0pt,
+backgroundcolor=\color[RGB]{245,245,244},
+escapeinside=``, %逃逸字符(1左面的键)，用于显示中文
+breaklines,
+extendedchars=false,
+%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+xleftmargin=2em,xrightmargin=2em,
+aboveskip=1em,%设置边距
+tabsize=4, %设置tab空格数  
+showspaces=false %不显示空格 
+rulesepcolor=\color{red!20!green!20!blue!20}
+%rulesepcolor=\color{brown}
+}
+
+
+
+% 行号
+\usepackage{lineno}
+
+
+% 引用
+\usepackage[colorlinks=true,
+            pdfborder=001,     
+            citecolor=blue,
+            linkcolor=red,
+            anchorcolor=green,
+            urlcolor=blue,
+            bookmarksopen=true,bookmarksnumbered=true]{hyperref}
