@@ -15,7 +15,7 @@ fyx=diff(fy,x1); %求二阶偏导数 对x2再对x1
 fyy=diff(fy,x2); %求二阶偏导数 对x2再对x2
 Gradient=[fx;fy];     %计算梯度表达式
 Hesse=[fxx,fxy;fyx,fyy];
-x=[10,0];        %定义初始点
+x=[10.5,0];        %定义初始点
 
 %%
 N=200;     %总迭代次数
@@ -76,8 +76,10 @@ figure;
 plot(OPT)
 xlabel('n/迭代次数')
 ylabel('q(x)')
+title('函数值的下降过程')
 figure;
 plot(kk,'*-')
+title('函数值收敛速度')
 %%
 % 最速下降法子程序，计算精确步长ak
 function a=Alpha(p,g,G)
