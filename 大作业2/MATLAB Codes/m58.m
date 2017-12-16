@@ -1,5 +1,5 @@
 %Å£¶ÙArmijo»ØËÝ·¨
-%For Problem 5.8 
+%For Problem 5.8
 %%
 %ÓÃ·ûºÅ±í´ïÊ½¶¨ÒåÄ¿±êº¯Êý
 clc;
@@ -46,16 +46,13 @@ while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊýÐ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊýµ½´ïÉÏÏ
     %ak=Alpha(p,g,G);
     %ak=1;
     ak=1;
-   % xk=x+ak*double(p');
-    %²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
-%     while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak))
-%         ak=0.5*ak;
-% 		if(Check(x+ak*double(p'))==0)
-% 			break;
-% 		end
-%         xk=x+ak*double(p');
-%     end
-     x=x+double(ak*p');
+    xk=x+ak*double(p');
+%    ²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
+        while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)||Check(x+ak*double(p')))
+            ak=0.5*ak;
+            xk=x+ak*double(p');
+        end
+    x=x+double(ak*p');
     %Êä³ö½á¹û
     optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
     fprintf('Step[%d]:  x=[ %f %f ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
@@ -67,35 +64,38 @@ end
 optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
 fprintf('\nÅ£¶ÙArmijo»ØËÝ·¨,,¹²µü´ú %d ²½\n½á¹û£º\n  x=[ %d %d ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
 P(step+1:N,:)=[];      %É¾È¥PÖÐµÄ¶àÓà¿Õ¼ä
+OPT(step+1:N,:)=[];  
 figure;
-plot(P(:,1),P(:,2),'-o')
+%plot(P(:,1),P(:,2),'-o')
 hold on;
-% xx =linspace(-1.5,1.5);
-% yy = linspace(-0.5,1.5);
-% [X,Y] = meshgrid(xx,yy);
-% Z=F(X,Y);
-% contour(X,Y,Z,'ShowText','on')
+xx =linspace(0,75,75);
+yy = linspace(-50,100,150);
+[X,Y] = meshgrid(xx,yy);
+Z=(X+Y<100).*(X-Y<50).*real(F(X,Y));
+pcolor(X,Y,Z)
+%axis equal tight
 figure;
 plot(OPT)
 %%
 % ¼ÆËã¾«È·²½³¤ak
 function a=Alpha(p,g,G)
-    a=-(p'*g)/(p'*G*p);
+a=-(p'*g)/(p'*G*p);
 end
 
 %²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
 function a=Armijo(x,p,g)
-    a=1;
-    xk=x+a*double(p);
-    while(F(xk(1),xk(2)) > F(x(1),x(2))+0.01*doubel(p'*g)*a)
-        a=0.9*a;
-        xk=xk+a*double(p);
-    end
+a=1;
+xk=x+a*double(p);
+while(F(xk(1),xk(2)) > F(x(1),x(2))+0.01*doubel(p'*g)*a)
+    a=0.9*a;
+    xk=xk+a*double(p);
+end
 end
 
 function bool=Check(x)
-	bool=0;
-	if (x(1)>0&& x(2)>0 && x(1)+x(2)<100&&x(1)-x(2)<50)
-		bool=1;
-	end
+%ÅÐ¶ÏµãxÊÇ·ñÔ½½ç
+bool=1;
+if (x(1)>0&& x(2)>0 && x(1)+x(2)<100&&x(1)-x(2)<50)
+    bool=0;
+end
 end
