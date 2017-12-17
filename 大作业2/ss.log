@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  16 DEC 2017 10:50
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  17 DEC 2017 12:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2185,7 +2185,32 @@ tly
 Package: xeCJK-listings 2017/05/15 v3.4.8 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count354
 \l__xeCJK_listings_flag_int=\count355
-) (./ss.aux)
+) (./ss.aux
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `tab:addlabel' multiply defined.
+
+)
 \openout1 = `ss.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -2206,8 +2231,7 @@ LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 8.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 8.
-
-(c:/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
+ (c:/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 8.
@@ -2298,10 +2322,6 @@ LaTeX Info: Redefining \nameref on input line 8.
 \@outlinefile=\write5
 \openout5 = `ss.out'.
 
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 \g__fontspec_family_SimHei_int=\count358
 .................................................
 . fontspec info: "no-font-shape"
@@ -2330,7 +2350,7 @@ Package hyperref Warning: Rerun to get /PageLabels entry.
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
 LaTeX Font Info:    Try loading font information for U+msa on input line 10.
-(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 10.
@@ -2364,20 +2384,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 . - 'normal' (m/n) with NFSS spec.: <->"KaiTi/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
-
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
+ (./ss.toc)
 \tf@toc=\write6
 \openout6 = `ss.toc'.
 
-[1
+ [1
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 20.
 File: fig/1_1a.pdf Graphic file (type QTm)
- <use  "fig/1_1a.pdf" >
+
+<use  "fig/1_1a.pdf" >
 File: fig/1_1b.pdf Graphic file (type QTm)
  <use  "fig/1_1b.pdf" >
 File: fig/1_2a.pdf Graphic file (type QTm)
@@ -2402,11 +2420,27 @@ File: fig/2_1.pdf Graphic file (type QTm)
 <use  "fig/2_1.pdf" > [5]
 File: fig/2_2.pdf Graphic file (type QTm)
  <use  "fig/2_2.pdf" >
+Overfull \hbox (45.62209pt too wide) detected at line 150
+\OML/cmm/m/it/10.53937 f\OT1/cmr/m/n/10.53937 ([]\OML/cmm/m/it/10.53937 ; []\OT
+1/cmr/m/n/10.53937 )[] \OMS/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 9[] \OM
+S/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 10[] \OMS/cmsy/m/n/10.53937 ^^@ \
+OML/cmm/m/it/10.53937 ^^V []
+ []
+
+[6]
+Overfull \hbox (65.5289pt too wide) detected at line 169
+[]
+ []
+
+File: fig/5_1.pdf Graphic file (type QTm)
+<use  "fig/5_1.pdf" >
+File: fig/5_2.pdf Graphic file (type QTm)
+ <use  "fig/5_2.pdf" > [7]
 File: fig/4_01.pdf Graphic file (type QTm)
- <use  "fig/4_01.pdf" > [6]
+ <use  "fig/4_01.pdf" > [8]
 File: fig/4_02.png Graphic file (type QTm)
 
-<use  "fig/4_02.png" > [7]
+<use  "fig/4_02.png" >
 File: fig/4_11.pdf Graphic file (type QTm)
  <use  "fig/4_11.pdf" >
 File: fig/4_12.pdf Graphic file (type QTm)
@@ -2415,7 +2449,7 @@ File: fig/4_13.pdf Graphic file (type QTm)
 
 <use  "fig/4_13.pdf" >
 File: fig/4_14.pdf Graphic file (type QTm)
- <use  "fig/4_14.pdf" > [8]
+ <use  "fig/4_14.pdf" > [9]
 File: fig/4_15.pdf Graphic file (type QTm)
  <use  "fig/4_15.pdf" >
 File: fig/4_21.pdf Graphic file (type QTm)
@@ -2427,7 +2461,7 @@ File: fig/4_23.pdf Graphic file (type QTm)
  <use  "fig/4_23.pdf" >
 File: fig/4_24.pdf Graphic file (type QTm)
 
-<use  "fig/4_24.pdf" > [9]
+<use  "fig/4_24.pdf" > [10]
 File: fig/4_25.pdf Graphic file (type QTm)
  <use  "fig/4_25.pdf" >
 File: fig/4_31.pdf Graphic file (type QTm)
@@ -2438,7 +2472,7 @@ File: fig/4_32.pdf Graphic file (type QTm)
 File: fig/4_33.pdf Graphic file (type QTm)
  <use  "fig/4_33.pdf" >
 File: fig/4_34.pdf Graphic file (type QTm)
- <use  "fig/4_34.pdf" > [10]
+ <use  "fig/4_34.pdf" > [11]
 File: fig/4_35.pdf Graphic file (type QTm)
 
 <use  "fig/4_35.pdf" >
@@ -2450,37 +2484,34 @@ File: fig/4_43.pdf Graphic file (type QTm)
 
 <use  "fig/4_43.pdf" >
 File: fig/4_44.pdf Graphic file (type QTm)
- <use  "fig/4_44.pdf" > [11]
+ <use  "fig/4_44.pdf" > [12]
 File: fig/4_45.pdf Graphic file (type QTm)
  <use  "fig/4_45.pdf" >
-[12] [13]
+[13] [14]
 File: fig/6_1.pdf Graphic file (type QTm)
  <use  "fig/6_1.pdf" >
 File: fig/6_2.pdf Graphic file (type QTm)
- <use  "fig/6_2.pdf" > [14]
-
-Package lastpage Warning: Rerun to get the references right on input line 318.
-
+ <use  "fig/6_2.pdf" > [15]
 
 AED: lastpage setting LastPage
-[15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
+[16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 352.
  (./ss.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 318.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 318.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 352.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 352.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 41755 strings out of 493005
- 805083 string characters out of 6137957
+ 41762 strings out of 493005
+ 805135 string characters out of 6137957
  871180 words of memory out of 5000000
- 45032 multiletter control sequences out of 15000+600000
+ 45035 multiletter control sequences out of 15000+600000
  19829 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  69i,11n,68p,10447b,600s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ss.pdf (15 pages).
+Output written on ss.pdf (16 pages).

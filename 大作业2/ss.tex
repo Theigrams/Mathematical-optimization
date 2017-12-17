@@ -146,6 +146,40 @@
 \includegraphics[width=11cm]{fig/2_2.pdf}
 \end{figure}
 
+\section{5.8}
+\[f({x_1},{x_2}){:=}-9{x_1}-10{x_2}-\mu \left[\ln(-{x_1}-{x_2}+100)+\ln (-{x_1}+{x_2}+50)+\ln ({x_1})+\ln ({x_2})\right]\]
+
+\[
+g(x_1, x_2) = \nabla f(x_1, x_2)=
+\begin{bmatrix}
+-9 -\dfrac{\mu}{x_1 }+\dfrac{\mu}{100 - x_1 - x_2} + \dfrac{\mu}{50 - x_1 + x_2} \\
+-10 - \dfrac{\mu}{x_2 }+\dfrac{\mu}{100 - x_1 - x_2} - \dfrac{\mu}{50 - x_1 + x_2}
+\end{bmatrix}
+\]
+
+
+\[G[x_1, x_2] = \nabla g(x_1, x_2)=\]
+\[
+\begin{bmatrix}
+\dfrac{1}{{x_1}^2 }+\dfrac{1}{(100 - x_1 - x_2)^2} + \dfrac{1}{(50 - x_1 + x_2)^2} 
+&\dfrac{1}{(100 - x_1 - x_2)^2} - \dfrac{1}{(50 - x_1 + x_2)^2}\\
+\dfrac{1}{(100 - x_1 - x_2)^2} - \dfrac{1}{(50 - x_1 + x_2)^2}&
+\dfrac{1}{{x_2}^2 }+\dfrac{1}{(100 - x_1 - x_2)^2} + \dfrac{1}{(50 - x_1 + x_2)^2} 
+\end{bmatrix}
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=11cm]{fig/5_1.pdf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=11cm]{fig/5_2.pdf}
+\end{figure}
+
+
+
 \section{5.9}
 首先画出Rosenbrock函数的图像及等值线如下\footnote{由于Rosenbrock函数过于陡峭，因此对原函数进行了取对数处理，以便于观察其特点。}:
 

@@ -1,5 +1,5 @@
-%¼òµ¥Å£¶Ù·¨
-%For Problem 5.8  
+%Å£¶ÙArmijo»ØËİ·¨
+%For Problem 5.8 
 %%
 %ÓÃ·ûºÅ±í´ïÊ½¶¨ÒåÄ¿±êº¯Êı
 clc;
@@ -32,7 +32,7 @@ imagesc([0,75],[0,100],Z)
 axis tight
 
 colorbar
-title('\mu=1 with linear seach')
+title('\mu=1 without linear seach')
 
 
 %%
@@ -50,9 +50,6 @@ fprintf('Step[%d]:  x=[ %f %f ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
 OPT(step,:)=optim_fx;
 
 while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏŞÊ±£¬Í£Ö¹µü´ú
-    if(Check(x))
-        break;
-    end
     step=step+1;
     %¼ÆËãÄ¿±êº¯Êıµãx(k)´¦Ò»½×µ¼ÊıÖµ
     g=subs(Gradient,[x1 x2],[x(1) x(2)]);
@@ -67,10 +64,10 @@ while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏ
     ak=1;
     xk=x+ak*double(p');
 %    ²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
-%         while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)||Check(x+ak*double(p')))
-%             ak=0.5*ak;
-%             xk=x+ak*double(p');
-%         end
+        while(Check(x+ak*double(p')))
+            ak=0.5*ak;
+            xk=x+ak*double(p');
+        end
     x=x+double(ak*p');
     %Êä³ö½á¹û
     optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
@@ -107,9 +104,6 @@ fprintf('Step[%d]:  x=[ %f %f ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
 OPT(step,:)=optim_fx;
 
 while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏŞÊ±£¬Í£Ö¹µü´ú
-      if(Check(x))
-        break;
-    end
     step=step+1;
     %¼ÆËãÄ¿±êº¯Êıµãx(k)´¦Ò»½×µ¼ÊıÖµ
     g=subs(Gradient,[x1 x2],[x(1) x(2)]);
@@ -124,10 +118,10 @@ while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏ
     ak=1;
     xk=x+ak*double(p');
 %    ²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
-%         while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)||Check(x+ak*double(p')))
-%             ak=0.5*ak;
-%             xk=x+ak*double(p');
-%         end
+        while(Check(x+ak*double(p')))
+            ak=0.5*ak;
+            xk=x+ak*double(p');
+        end
     x=x+double(ak*p');
     %Êä³ö½á¹û
     optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
@@ -163,9 +157,6 @@ fprintf('Step[%d]:  x=[ %f %f ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
 OPT(step,:)=optim_fx;
 
 while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏŞÊ±£¬Í£Ö¹µü´ú
-      if(Check(x))
-        break;
-    end
     step=step+1;
     %¼ÆËãÄ¿±êº¯Êıµãx(k)´¦Ò»½×µ¼ÊıÖµ
     g=subs(Gradient,[x1 x2],[x(1) x(2)]);
@@ -180,10 +171,10 @@ while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏ
     ak=1;
     xk=x+ak*double(p');
 %    ²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
-%         while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)||Check(x+ak*double(p')))
-%             ak=0.5*ak;
-%             xk=x+ak*double(p');
-%         end
+        while(Check(x+ak*double(p')))
+            ak=0.5*ak;
+            xk=x+ak*double(p');
+        end
     x=x+double(ak*p');
     %Êä³ö½á¹û
     optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
@@ -219,9 +210,6 @@ fprintf('Step[%d]:  x=[ %f %f ] optim_fx=%f\n',step,x(1),x(2),double(optim_fx));
 OPT(step,:)=optim_fx;
 
 while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏŞÊ±£¬Í£Ö¹µü´ú
-      if(Check(x))
-        break;
-    end
     step=step+1;
     %¼ÆËãÄ¿±êº¯Êıµãx(k)´¦Ò»½×µ¼ÊıÖµ
     g=subs(Gradient,[x1 x2],[x(1) x(2)]);
@@ -236,10 +224,10 @@ while (norm(g)>e  && step < N)       %µ±gµÄ2-·¶ÊıĞ¡ÓÚÌØ¶¨ÖµÊ±£¬»òµü´ú´ÎÊıµ½´ïÉÏÏ
     ak=1;
     xk=x+ak*double(p');
 %    ²ÉÓÃArmijo·¨Ôò¼ÆËã½üËÆ²½³¤ak
-%         while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)||Check(x+ak*double(p')))
-%             ak=0.5*ak;
-%             xk=x+ak*double(p');
-%         end
+        while(Check(x+ak*double(p')))
+            ak=0.5*ak;
+            xk=x+ak*double(p');
+        end
     x=x+double(ak*p');
     %Êä³ö½á¹û
     optim_fx=subs(f,[x1 x2],[x(1) x(2)]);
