@@ -1,0 +1,55 @@
+\newpage
+\section{Problem 5.19}
+
+\subsection{算法伪代码}
+\begin{algorithm}[h]  
+\caption{Conjugate gradient method method for problem(5.19)}  
+\begin{algorithmic}[1]  
+\STATE Given $\bm{x}^{(0)}$ and $G$
+\STATE Compute $\bm{g}^{(0)}=\bm{G}\bm{x}^{(0)}+b$
+\STATE Set $\bm{p}^{(0)}=-\bm{g}^{(0)},k=0$
+\WHILE {$\|\bm{g}^{(k)}\|>\epsilon$}
+\STATE Compute $\alpha_k$ by Backtracking-Armijo Line Search
+\STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\alpha_k\bm{p}^{(k)}$
+\STATE Set $\bm{g}^{(k+1)}=g(\bm{x}^{(k+1)})$
+\STATE Set $\bm{p}^{(k)}=-\bm{g}^{(k)}$
+\STATE k=k+1
+\ENDWHILE
+\end{algorithmic}  
+\end{algorithm}
+
+\subsection{计算结果展示}
+迭代次数和求解的值如下:
+\begin{table}[htbp]
+  \centering
+  \rowcolors{2}{blue!15}{blue!30}
+    \begin{tabular}{cccc}
+    \rowcolor{gray!50}
+    \textbf{n=5} & \textbf{n=8} & \textbf{n=12} & \textbf{n=20} \\
+    \rowcolor{lightgray!50}
+    k=6   & k=19  & k=35  & k=66 \\
+    \rowcolor{gray!50}
+    x     & x     & x     & x \\
+    5.00E+00 & 5.90E-11 & -9.61E+00 & -1.10E+01 \\
+    -1.20E+02 & -6.97E-11 & 8.15E+02 & 1.05E+03 \\
+    6.30E+02 & -5.16E-10 & -1.65E+04 & -2.40E+04 \\
+    -1.12E+03 & 1.12E-09 & 1.36E+05 & 2.20E+05 \\
+    6.30E+02 & 3.17E-10 & -5.36E+05 & -9.65E+05 \\
+          & -6.55E-10 & 1.03E+06 & 1.99E+06 \\
+          & -6.57E-10 & -6.43E+05 & -1.25E+06 \\
+          & 4.59E-10 & -6.58E+05 & -1.34E+06 \\
+          &       & 8.04E+05 & 8.83E+05 \\
+          &       & 6.63E+05 & 1.69E+06 \\
+          &       & -1.24E+06 & 3.88E+05 \\
+          &       & 4.66E+05 & -1.31E+06 \\
+          &       &       & -1.71E+06 \\
+          &       &       & -5.28E+05 \\
+          &       &       & 1.21E+06 \\
+          &       &       & 2.00E+06 \\
+          &       &       & 9.45E+05 \\
+          &       &       & -1.43E+06 \\
+          &       &       & -2.65E+06 \\
+          &       &       & 1.89E+06 \\
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
