@@ -16,19 +16,9 @@
 \end{figure}
 
 \subsection{算法伪代码}
+Armijo线搜索法参看上节的(\textbf{Algorithm} \ref{Amj})
 
-\begin{algorithm}[h]  
-\caption{Backtracking-Armijo Line Search}  
-\begin{algorithmic}[1]  
-\STATE Choose $\bar{\alpha}>0,\quad \gamma,\rho\in (0,1)$
-\STATE Set $\alpha=\bar{\alpha}$
-\WHILE {$\phi(\alpha)>\phi(0)+\rho\phi'(0)\alpha$}
-\STATE Set $\alpha=\gamma\alpha$
-\ENDWHILE
-\RETURN $\alpha$ as $\alpha_k$
-\end{algorithmic}  
-\end{algorithm}
-
+带线搜索的Newton法算法参看上节的(\textbf{Algorithm} \ref{NewtonAmj})
 
 \begin{algorithm}[h]  
 \caption{Steepest-denscent-Armijo method for problem(5.9)}  
@@ -36,7 +26,7 @@
 \STATE Given $\bm{x}^{(0)}$ and $G$
 \STATE Set $\bm{p}^{(0)}=-\bm{g}^{(0)},k=0$
 \WHILE {$\|\bm{g}^{(k)}\|>\epsilon$}
-\STATE Compute $\alpha_k$ by Backtracking-Armijo Line Search
+\STATE Compute $\alpha_k$ by Line Search(\textbf{Algorithm} \ref{Amj})
 \STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\alpha_k\bm{p}^{(k)}$
 \STATE Set $\bm{g}^{(k+1)}=g(\bm{x}^{(k+1)})$
 \STATE Set $\bm{p}^{(k)}=-\bm{g}^{(k)}$
@@ -45,20 +35,7 @@
 \end{algorithmic}  
 \end{algorithm}
 
-\begin{algorithm}[h]  
-\caption{Newton-Armijo method for problem(5.9)}  
-\begin{algorithmic}[1]  
-\STATE Given $\bm{x}^{(0)}$ and compute $\bm{g}(\bm{x})= \nabla f(\bm{x})$
-\STATE Compute $\bm{G}(\bm{x})= \nabla {\bm{g}(\bm{x})}^T$
-\STATE Set $\bm{g}^{(0)}=\bm{g}(\bm{x}^{(0)}),k=0$
-\WHILE {$\|\bm{g}^{(k)}\|_2>\epsilon$}
-\STATE Set $\bm{s}^{(k)}=-{\bm{G}^{(k)}}^{-1}\bm{g}^{(k)}$
-\STATE Compute $\alpha_k$ by Backtracking-Armijo Line Search
-\STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\alpha_k\bm{s}^{(k)}$
-\STATE Set k=k+1
-\ENDWHILE
-\end{algorithmic}  
-\end{algorithm} 
+
 
 \subsection{计算结果展示}
 
@@ -79,12 +56,21 @@
 \caption{Steepest-denscent in (1.2,1.2)}
 \label{Fig.lable}
 \end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{fig/4_15.pdf}
-%\caption{在$(1,1)$处附近的三维等高线}
-\end{figure}
+\begin{lstlisting}
+%Result for Steepest-denscent in (1.2,1.2)
+Step[1]:  x=[ 1.200000 1.200000 ] optim_fx=5.800000
+Step[2]:  x=[ 1.087109 1.246875 ] optim_fx=0.430975
+Step[3]:  x=[ 1.114571 1.234166 ] optim_fx=0.019689
+...
+...
+...
+Step[198]:  x=[ 1.083582 1.174725 ] optim_fx=0.007019
+Step[199]:  x=[ 1.083742 1.174500 ] optim_fx=0.007013
+Step[200]:  x=[ 1.083580 1.174500 ] optim_fx=0.006998
+%最速下降法,共迭代 200 步
+%最优解：
+x=[ 1.083580e+00 1.174500e+00 ] optim_fx=0.006998
+\end{lstlisting}
 
 \begin{figure}[H]
 \centering
@@ -100,11 +86,27 @@
 \label{Fig.lable}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{fig/4_25.pdf}
-%\caption{在$(1,1)$处附近的三维等高线}
-\end{figure}
+\begin{lstlisting}
+%Result for Steepest-denscent in (-1.2,1)
+Step[1]:  x=[ -1.200000 1.000000 ] optim_fx=24.200000
+Step[2]:  x=[ -0.989453 1.085938 ] optim_fx=5.101113
+Step[3]:  x=[ -1.026893 1.065055 ] optim_fx=4.119416
+Step[4]:  x=[ -1.027979 1.056815 ] optim_fx=4.112700
+Step[5]:  x=[ 0.984742 1.049394 ] optim_fx=0.635080
+Step[6]:  x=[ 1.015421 1.033832 ] optim_fx=0.000995
+...
+...
+...
+Step[195]:  x=[ 1.005171 1.010402 ] optim_fx=0.000027
+Step[196]:  x=[ 1.005177 1.010389 ] optim_fx=0.000027
+Step[197]:  x=[ 1.005163 1.010386 ] optim_fx=0.000027
+Step[198]:  x=[ 1.005169 1.010373 ] optim_fx=0.000027
+Step[199]:  x=[ 1.005155 1.010370 ] optim_fx=0.000027
+Step[200]:  x=[ 1.005161 1.010357 ] optim_fx=0.000027
+%最速下降法,共迭代 200 步
+%最优解：
+x=[ 1.005161e+00 1.010357e+00 ] optim_fx=0.000027
+\end{lstlisting}
 
 \begin{figure}[H]
 \centering
@@ -120,11 +122,21 @@
 \label{Fig.lable}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{fig/4_35.pdf}
-%\caption{在$(1,1)$处附近的三维等高线}
-\end{figure}
+\begin{lstlisting}
+%Result for Newton-Armijo in (1.2,1.2)
+Step[1]: x=[ 1.200000 1.200000 ] optim_fx=5.800000
+Step[2]: x=[ 1.195918 1.430204 ] optim_fx=0.038384
+Step[3]: x=[ 1.098284 1.196688 ] optim_fx=0.018762
+Step[4]: x=[ 1.064488 1.131993 ] optim_fx=0.004289
+Step[5]: x=[ 1.011992 1.021372 ] optim_fx=0.000903
+Step[6]: x=[ 1.004261 1.008481 ] optim_fx=0.000019
+Step[7]: x=[ 1.000050 1.000083 ] optim_fx=0.000000
+Step[8]: x=[ 1.000000 1.000000 ] optim_fx=0.000000
+Step[9]: x=[ 1.000000 1.000000 ] optim_fx=0.000000
+%牛顿 Armijo 回溯法,,共迭代 9 步
+%最优解:
+x=[ 1.000000e+00 1.000000e+00 ] optim_fx=0.000000
+\end{lstlisting}
 
 \begin{figure}[H]
 \centering
@@ -140,8 +152,25 @@
 \label{Fig.lable}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{fig/4_45.pdf}
-%\caption{在$(1,1)$处附近的三维等高线}
-\end{figure}
+\begin{lstlisting}
+%Result for Newton-Armijo in (-1.2,1)
+Step[1]:  x=[ -1.200000 1.000000 ] optim_fx=24.200000
+Step[2]:  x=[ -1.175281 1.380674 ] optim_fx=4.731884
+Step[3]:  x=[ -0.932981 0.811211 ] optim_fx=4.087399
+Step[4]:  x=[ -0.782540 0.589736 ] optim_fx=3.228673
+Step[5]:  x=[ -0.459997 0.107563 ] optim_fx=3.213898
+Step[6]:  x=[ -0.393046 0.150002 ] optim_fx=1.942585
+...
+...
+...
+Step[17]:  x=[ 0.942079 0.881336 ] optim_fx=0.007169
+Step[18]:  x=[ 0.967992 0.936337 ] optim_fx=0.001070
+Step[19]:  x=[ 0.996210 0.991639 ] optim_fx=0.000078
+Step[20]:  x=[ 0.999479 0.998948 ] optim_fx=0.000000
+Step[21]:  x=[ 0.999999 0.999998 ] optim_fx=0.000000
+Step[22]:  x=[ 1.000000 1.000000 ] optim_fx=0.000000
+Step[22]: x=[ 1.000000 1.000000 ] optim_fx=0.000000
+%牛顿 Armijo 回溯法,,共迭代 22 步
+%最优解:
+x=[ 1.000000e+00 1.000000e+00 ] optim_fx=0.000000
+\end{lstlisting}

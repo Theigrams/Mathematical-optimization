@@ -4,10 +4,9 @@ clear;
 N=10;
 X=zeros(N,1);
 P=zeros(N,1);
-x=8;
-step=0;
- step=1;
- X(step)=x;
+x=7.7;
+step=1;
+X(step)=x;
 fun =@(x) 9*x-4*log(x-7);
 %while (abs(g(x))>0.000001)
 while (step<N+1)
@@ -17,8 +16,12 @@ while (step<N+1)
     P(step)=f(x);
    %x=x-0.25*(x-7)*(9*x-67)
 end
-plot(X)
+%plot(X)
 %[s1,s2]= fminsearch(fun,7);
+figure;
+hold on
+fplot(@(x) 9*x-4*log(x-7),[7.2,7.8])
+plot(X,9*X-4*log(X-7))
 function y=f(x)
 y=9*x-4*log(x-7);
 end

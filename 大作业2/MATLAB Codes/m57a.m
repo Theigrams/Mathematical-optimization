@@ -1,9 +1,9 @@
 clc;
 clear;
-N=20;
-for i=0:0.05:5
+N=8;
+for i=0:0.05:0.8
     X=zeros(1,N);
-    x=8+i;
+    x=7+i;
     step=1;
     X(step)=x;
     while (step<N+1)

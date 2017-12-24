@@ -1,24 +1,9 @@
-\contentsline {section}{\numberline {1}Problem 5.6}{3}{section.1}
+\contentsline {section}{\numberline {1}Problem 5.8}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}重要参数}{3}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}算法伪代码}{3}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}计算结果展示}{4}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}分析}{5}{subsection.1.4}
-\contentsline {section}{\numberline {2}Problem 5.7}{7}{section.2}
-\contentsline {subsection}{\numberline {2.1}重要参数}{7}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}算法伪代码}{7}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}计算结果展示}{7}{subsection.2.3}
-\contentsline {section}{\numberline {3}Problem 5.8}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}重要参数}{10}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}算法伪代码}{10}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}计算结果展示}{11}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}总结分析}{12}{subsection.3.4}
-\contentsline {section}{\numberline {4}Problem5.9}{14}{section.4}
-\contentsline {subsection}{\numberline {4.1}Rosenbrock函数图像}{14}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}算法伪代码}{15}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}计算结果展示}{15}{subsection.4.3}
-\contentsline {section}{\numberline {5}Problem 5.19}{21}{section.5}
-\contentsline {subsection}{\numberline {5.1}算法伪代码}{21}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}计算结果展示}{21}{subsection.5.2}
-\contentsline {section}{\numberline {6}Problem 5.27}{23}{section.6}
-\contentsline {subsection}{\numberline {6.1}计算结果展示}{24}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}算法伪代码}{24}{subsection.6.2}
+\contentsline {subsection}{\numberline {1.3}迭代点运动轨迹展示}{5}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}总结分析}{6}{subsection.1.4}
+\contentsline {section}{\numberline {2}Problem5.9}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Rosenbrock函数图像}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}算法伪代码}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}计算结果展示}{9}{subsection.2.3}

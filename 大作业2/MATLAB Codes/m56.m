@@ -15,7 +15,7 @@ fyx=diff(fy,x1); %求二阶偏导数 对x2再对x1
 fyy=diff(fy,x2); %求二阶偏导数 对x2再对x2
 Gradient=[fx;fy];     %计算梯度表达式
 Hesse=[fxx,fxy;fyx,fyy];
-x=[10.5,0];        %定义初始点
+x=[35/3,0];        %定义初始点
 
 %%
 N=200;     %总迭代次数

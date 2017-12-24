@@ -1,8 +1,11 @@
 \newpage
 \section{Problem 5.8}
 \subsection{重要参数}
-\[f({x_1},{x_2})=-9{x_1}-10{x_2}-\mu \left[\ln(-{x_1}-{x_2}+100)+\ln (-{x_1}+{x_2}+50)+\ln ({x_1})+\ln ({x_2})\right]\]
-
+\begin{align}
+f({x_1},{x_2})=&-9{x_1}-10{x_2}\nonumber\\
+&-\mu \big[\ln(-{x_1}-{x_2}+100)+\ln (-{x_1}+{x_2}+50)+\ln ({x_1})+\ln ({x_2})\big]
+\nonumber
+\end{align}
 
 
 \begin{align}
@@ -27,21 +30,51 @@
 
 \subsection{算法伪代码}
 \begin{algorithm}[h]  
-\caption{Newton-Armijo method for problem(5.8)}  
+\caption{Backtracking-Armijo Line Search} 
+\label{Amj} 
+\begin{algorithmic}[1]  
+\STATE Choose $\bar{\alpha}>0,\quad \gamma,\rho\in (0,1)$
+\STATE Set $\alpha=\bar{\alpha}$
+\WHILE {$\phi(\alpha)>\phi(0)+\rho\phi'(0)\alpha$}
+\STATE Set $\alpha=\gamma\alpha$
+\ENDWHILE
+\RETURN $\alpha$ as $\alpha_k$
+\end{algorithmic}  
+\end{algorithm}
+
+\begin{algorithm}[h]  
+\caption{Newton method without Armijo Line Searchfor problem(5.8)}  
 \begin{algorithmic}[1]  
 \STATE Given $\bm{x}^{(0)}$ and compute $\bm{g}(\bm{x})= \nabla f(\bm{x})$
 \STATE Compute $\bm{G}(\bm{x})= \nabla {\bm{g}(\bm{x})}^T$
 \STATE Set $\bm{g}^{(0)}=\bm{g}(\bm{x}^{(0)}),k=0$
 \WHILE {$\|\bm{g}^{(k)}\|_2>\epsilon$}
 \STATE Set $\bm{s}^{(k)}=-{\bm{G}^{(k)}}^{-1}\bm{g}^{(k)}$
-\STATE Compute $\alpha_k$ by Backtracking-Armijo Line Search
+\STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\bm{s}^{(k)}$
+\STATE Set k=k+1
+\ENDWHILE
+\end{algorithmic}  
+\end{algorithm} 
+
+\begin{algorithm}[h]  
+\caption{Newton method with Armijo Line Searchfor problem(5.58)}  
+\label{NewtonAmj} 
+\begin{algorithmic}[1]  
+\STATE Given $\bm{x}^{(0)}$ and compute $\bm{g}(\bm{x})= \nabla f(\bm{x})$
+\STATE Compute $\bm{G}(\bm{x})= \nabla {\bm{g}(\bm{x})}^T$
+\STATE Set $\bm{g}^{(0)}=\bm{g}(\bm{x}^{(0)}),k=0$
+\WHILE {$\|\bm{g}^{(k)}\|_2>\epsilon$}
+\STATE Set $\bm{s}^{(k)}=-{\bm{G}^{(k)}}^{-1}\bm{g}^{(k)}$
+\STATE Compute $\alpha_k$ by Line Search(\textbf{Algorithm} \ref{Amj})
 \STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\alpha_k\bm{s}^{(k)}$
 \STATE Set k=k+1
 \ENDWHILE
 \end{algorithmic}  
 \end{algorithm} 
 
-\subsection{计算结果展示}
+
+
+\subsection{迭代点运动轨迹展示}
 \begin{figure}[H]
 \centering
 \includegraphics[width=11cm]{fig/5_1.pdf}
@@ -53,6 +86,8 @@
 \end{figure}
 
 \subsection{总结分析}
+本题中Armijo线搜索的参数为$\gamma=0.5,\rho=0.01$
+
 没加线搜索和越界判定之前，牛顿法总是一两次就冲到了定义域外，然后无法收敛。
 
 然后我加了个越界判定:若下一步的迭代点不在定义域内，则将步长$\alpha$缩小一半，牛顿法很好地收敛到了全局最优点。
@@ -76,4 +111,9 @@ while(F(xk(1),xk(2)) > (F(x(1),x(2))+0.01*double(p'*g)*ak)
 end
 \end{lstlisting}
 
-然而得到的结果和没加线搜索一样，可见在迭代的前期，越界判定起到了一定类似于线搜索缩短步长的效果，而到了迭代的后期，已经牛顿法的基本步长已经满足Armijo法则，还原成了基本牛顿法。
+然而得到的结果与加上线搜索之前一样，可见在迭代的前期，越界判定起到了一定类似于线搜索缩短步长的效果，而到了迭代的后期，牛顿法的基本步长已经满足Armijo法则，还原成了基本牛顿法。
+
+\subsection{牛顿法总结分析}
+在面临梯度变化特别大的情况时，最速下降法显得非常不尽人意，即使在离稳定点非常近的地方依旧不能快速收敛，呈锯齿状，由我们所学的知识可以知道，最速下降法的收敛速度强烈依赖于Hessian矩阵的条件数。
+
+而牛顿法显得更加智能
