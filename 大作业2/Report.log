@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  24 DEC 2017 03:00
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  25 DEC 2017 04:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2194,17 +2194,7 @@ Package: xeCJK-listings 2017/05/15 v3.4.8 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count354
 \l__xeCJK_listings_flag_int=\count355
 )
-(./Report.aux (./P3.aux) (./P4.aux
-
-LaTeX Warning: Label `Fig.lable' multiply defined.
-
-
-LaTeX Warning: Label `Fig.lable' multiply defined.
-
-
-LaTeX Warning: Label `Fig.lable' multiply defined.
-
-))
+(./Report.aux (./P5.aux))
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -2389,30 +2379,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not avail
 able
 (Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 
-16.
+17.
 
 [2]
-\openout2 = `P3.aux'.
+\openout2 = `P5.aux'.
 
- (./P3.tex
-Overfull \hbox (75.48274pt too wide) in paragraph at lines 29--29
-[] 
- []
+ (./P5.tex [3
 
+]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 33.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+put line 25.
 File: fig/5_1.pdf Graphic file (type QTm)
-<use  "fig/5_1.pdf" > [3
-
-] [4]
+ <use  "fig/5_1.pdf" > [4]
 File: fig/5_2.pdf Graphic file (type QTm)
- <use  "fig/5_2.pdf" > [5]
+ <use  "fig/5_2.pdf" >
+File: fig/5_3.pdf Graphic file (type QTm)
+
+<use  "fig/5_3.pdf" > [5]
+File: fig/5_4.pdf Graphic file (type QTm)
+ <use  "fig/5_4.pdf" > [6]
 \g__fontspec_family_FangSong_int=\count360
 .................................................
 . fontspec info: "no-font-shape"
@@ -2441,74 +2426,40 @@ File: fig/5_2.pdf Graphic file (type QTm)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
-) [6]
-\openout2 = `P4.aux'.
+File: fig/5_5.pdf Graphic file (type QTm)
+ <use  "fig/5_5.pdf" >
+[7]
+File: fig/5_7.pdf Graphic file (type QTm)
+ <use  "fig/5_7.pdf" > [8]
+Overfull \hbox (11.16199pt too wide) in paragraph at lines 159--167
+ [][] 
+ []
 
- (./P4.tex
-File: fig/4_01.pdf Graphic file (type QTm)
+File: fig/5_6.pdf Graphic file (type QTm)
+<use  "fig/5_6.pdf" >
+Overfull \hbox (10.65944pt too wide) in paragraph at lines 173--174
+ [][] 
+ []
 
-<use  "fig/4_01.pdf" >
-File: fig/4_02.png Graphic file (type QTm)
- <use  "fig/4_02.png" > [7
+File: fig/5_8.pdf Graphic file (type QTm)
+<use  "fig/5_8.pdf" > [9]
+File: fig/5_9.pdf Graphic file (type QTm)
+ <use  "fig/5_9.pdf" >) [10]
 
-
-] [8]
-File: fig/4_11.pdf Graphic file (type QTm)
- <use  "fig/4_11.pdf" >
-File: fig/4_12.pdf Graphic file (type QTm)
-
-<use  "fig/4_12.pdf" >
-File: fig/4_13.pdf Graphic file (type QTm)
- <use  "fig/4_13.pdf" >
-File: fig/4_14.pdf Graphic file (type QTm)
- <use  "fig/4_14.pdf" >
-File: fig/4_21.pdf Graphic file (type QTm)
-
-<use  "fig/4_21.pdf" >
-File: fig/4_22.pdf Graphic file (type QTm)
- <use  "fig/4_22.pdf" >
-File: fig/4_23.pdf Graphic file (type QTm)
- <use  "fig/4_23.pdf" >
-File: fig/4_24.pdf Graphic file (type QTm)
-
-<use  "fig/4_24.pdf" > [9]
-File: fig/4_31.pdf Graphic file (type QTm)
- <use  "fig/4_31.pdf" >
-File: fig/4_32.pdf Graphic file (type QTm)
- <use  "fig/4_32.pdf" >
-File: fig/4_33.pdf Graphic file (type QTm)
-
-<use  "fig/4_33.pdf" >
-File: fig/4_34.pdf Graphic file (type QTm)
- <use  "fig/4_34.pdf" > [10]
-File: fig/4_41.pdf Graphic file (type QTm)
- <use  "fig/4_41.pdf" >
-File: fig/4_42.pdf Graphic file (type QTm)
-
-<use  "fig/4_42.pdf" >
-File: fig/4_43.pdf Graphic file (type QTm)
- <use  "fig/4_43.pdf" >
-File: fig/4_44.pdf Graphic file (type QTm)
- <use  "fig/4_44.pdf" > [11])
-[12] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
-(./Report.aux (./P3.aux) (./P4.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 20.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 20.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 19.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 19.
+(./Report.aux (./P5.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 19.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 19.
  ) 
 Here is how much of TeX's memory you used:
- 41901 strings out of 493005
- 804684 string characters out of 6137957
- 888064 words of memory out of 5000000
- 45159 multiletter control sequences out of 15000+600000
- 19877 words of font info for 109 fonts, out of 8000000 for 9000
+ 41746 strings out of 493005
+ 802095 string characters out of 6137957
+ 875064 words of memory out of 5000000
+ 45025 multiletter control sequences out of 15000+600000
+ 17383 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 69i,17n,68p,10451b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,11n,68p,10451b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Report.pdf (12 pages).
+Output written on Report.pdf (10 pages).
