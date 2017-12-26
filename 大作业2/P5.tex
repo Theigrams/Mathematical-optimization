@@ -14,7 +14,6 @@
 
 希尔伯特矩阵的一个特点就是条件数特别大，以上面的5阶Hilbert矩阵为例，当范数为$l_2$矩阵范数时，其条件数大约是$4.8\times 10^{5}$
 
-因此，用
 经证明:当 $ n\rightarrow \infty$的时候，$ n\times n$的希尔伯特矩阵的条件数近似为$O((1+{\sqrt  {2}})^{{4n}}/{\sqrt  {n}})$
 
 MATLAB中有直接生成$N$阶希尔伯特矩阵的函数:\boxed{hilb(N)}
@@ -151,7 +150,7 @@ norm(H*H_inv-I)
 
 可见在精度要求较低的情况下，两者的相差并不明显。
 
-然后我试着将$N$调到100，观察其迭代情况，发现在精度较低时，PCG法所迭代的次数有时候甚至比CG法还要多，但在精度要求达$10^{-8}$ 时，CG法无论如何迭代都无法满足精度要求，而PCG略胜一筹，精度高出了一个数量级.
+然后我试着将$N$调到100，观察其迭代情况，发现在精度较低时，PCG法所迭代的次数有时候甚至比CG法还要多，但在精度要求达$10^{-8}$ 时，CG法无论如何迭代都无法满足精度要求，而PCG略胜一筹，精度高出了一个数量级，且迭代次数更少。
 
 \begin{table}[htbp]
   \centering
@@ -167,20 +166,19 @@ norm(H*H_inv-I)
 \end{table}
 
 
-此外，该书上还列举了梯度下降法(PG)和预处理共轭梯度法(PCG)在求解该问题上的比较，我认为比较有借鉴意义，贴在图下：
+此外，该书上还列举了梯度下降法(PG)和预处理共轭梯度法(PCG)在求解该问题上的比较，我认为比较有借鉴意义，贴在下面：
 \begin{figure}[H]
 \centering
 \includegraphics[width=12.5cm]{fig/5_6.pdf}
 \end{figure}
 
+$N=20$时，有/无预处理的共轭梯度法迭代情况如下：\footnote{第一个图的精度要求为$10^{-7}$，第二个图的精度要求为$10^{-8}$}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10.5cm]{fig/5_8.pdf}
-\caption{$(N=20)$,error=e-7}
+\includegraphics[width=10.8cm]{fig/5_8.pdf}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10.5cm]{fig/5_9.pdf}
-\caption{$(N=20)$,error=e-8}
+\includegraphics[width=10.8cm]{fig/5_9.pdf}
 \end{figure}

@@ -1,91 +1,411 @@
 \newpage
-\section{5.6}
-对于$q(\bm{x})=(10x_1^2-18x_1x_2+10x_2^2)/2+4x_1-15x_2+13$
-
+\section{Problem 6.4}
 \subsection{重要参数}
+此题要求极小化2n阶的Rosenbrock函数：
+\begin{equation}
+f(x)=\sum_{i=1}^{n}\Big[(1-x_{2i-1})^2+10(x_{2i}-x_{2i-1}^2)^2\Big]
+\end{equation}
 
-\[G=\begin{bmatrix}
-10&-9\\
--9&10
-\end{bmatrix},\qquad \lambda_1=19,\lambda_2=1,\qquad (\dfrac {\lambda_{1}-\lambda_{2}}{\lambda_{1}+x_{2}})^2 =0.81\]
+需要使用基于Steihaug的共轭梯度法的信赖域法，并选取$\bm{B}^{(k)}$为精确Hessian阵.
 
+在此之前我们先展示一下$n=2,\ n=3$时的Rosenbrock函数、梯度函数及其Hessian阵：
+
+\subsection*{$n=2$时}
+\[f(\bm{x})={\left(x_{1}-1\right)}^2+{\left(x_{3}-1\right)}^2+10\,{\left(x_{2}-{x_{1}}^2\right)}^2+10\,{\left(x_{4}-{x_{3}}^2\right)}^2\]
+
+\[\bm{g}(\bm{x})=\left(\begin{array}{c} 2\,x_{1}-40\,x_{1}\,\left(x_{2}-{x_{1}}^2\right)-2\\ 20\,x_{2}-20\,{x_{1}}^2\\ 2\,x_{3}-40\,x_{3}\,\left(x_{4}-{x_{3}}^2\right)-2\\ 20\,x_{4}-20\,{x_{3}}^2 \end{array}\right)\]
+
+Hessian矩阵为：
+\[\left(\begin{array}{cccc} 120\,{x_{1}}^2-40\,x_{2}+2 & -40\,x_{1} & 0 & 0\\ -40\,x_{1} & 20 & 0 & 0\\ 0 & 0 & 120\,{x_{3}}^2-40\,x_{4}+2 & -40\,x_{3}\\ 0 & 0 & -40\,x_{3} & 20 \end{array}\right)\]
+
+\subsection*{$n=3$时}
+\[f(\bm{x})={\left(x_{1}-1\right)}^2+{\left(x_{3}-1\right)}^2+{\left(x_{5}-1\right)}^2+10\,{\left(x_{2}-{x_{1}}^2\right)}^2+10\,{\left(x_{4}-{x_{3}}^2\right)}^2+10\,{\left(x_{6}-{x_{5}}^2\right)}^2\]
+
+\[\bm{g}(\bm{x})= \left(\begin{array}{c} 2\,x_{1}-40\,x_{1}\,\left(x_{2}-{x_{1}}^2\right)-2\\ 20\,x_{2}-20\,{x_{1}}^2\\ 2\,x_{3}-40\,x_{3}\,\left(x_{4}-{x_{3}}^2\right)-2\\ 20\,x_{4}-20\,{x_{3}}^2\\ 2\,x_{5}-40\,x_{5}\,\left(x_{6}-{x_{5}}^2\right)-2\\ 20\,x_{6}-20\,{x_{5}}^2 \end{array}\right)\]
+
+Hessian矩阵为：
+\[ \left(\begin{array}{cccccc} 120\,{x_{1}}^2-40\,x_{2}+2 & -40\,x_{1} & 0 & 0 & 0 & 0\\ -40\,x_{1} & 20 & 0 & 0 & 0 & 0\\ 0 & 0 & 120\,{x_{3}}^2-40\,x_{4}+2 & -40\,x_{3} & 0 & 0\\ 0 & 0 & -40\,x_{3} & 20 & 0 & 0\\ 0 & 0 & 0 & 0 & 120\,{x_{5}}^2-40\,x_{6}+2 & -40\,x_{5}\\ 0 & 0 & 0 & 0 & -40\,x_{5} & 20 \end{array}\right)\]
+
+
+可见手动计算Rosenbrock函数、梯度及Hessian阵是多么的麻烦，所以我通过符号表达式的方式在MATLAB中构建函数，并通过gradient()和hessian()函数自动生成梯度向量的表达式和hessian阵的表达式，程序如下：
+
+\begin{lstlisting}
+X = sym('x', [2*n,1]) ;  %符号表达式定义x1,x2,...x2n
+f=0;    
+for i=1:n
+    f=f+(1-X(2*i-1))^2+10*(X(2*i)-X(2*i-1)^2)^2;    %符号表达式定义f(x)
+end
+
+grad=gradient(f,X);  %计算梯度向量的表达式
+Hess=hessian(f,X);    %计算hessian阵的表达式
+\end{lstlisting}
+
+
+
+\subsection*{信赖域子问题}
+\begin{alignat}{2}
+\min \quad & q(\bm{s})=f+\bm{g}^{T}\bm{s}+\dfrac{1}{2}\bm{s}^T\bm{Bs} \label{subp} \\
+\mbox{s.t.}\quad
+&\|\bm{s}\|_2\leq\Delta \nonumber
+\end{alignat}
+
+\newpage
 \subsection{算法伪代码}
 \begin{algorithm}[h]  
-\caption{Steepest-denscent method for problem(5.6)}  
+\caption{Practical trust region method}  
 \begin{algorithmic}[1]  
-\STATE Given $\bm{x}^{(0)}$ and $G$
-\STATE Set $\bm{p}^{(0)}=-\bm{g}^{(0)},k=0$
-\WHILE {$\|\bm{g}^{(k)}\|>\epsilon$}
-\STATE Set $\alpha_k=-\dfrac{{{\bm{p}^{(k)}}^T}\bm{g}^{(k)}}{{\bm{p}^{(k)}}^T\bm{G}\bm{p}^{(k)}}$
-\STATE Set $\bm{x}^{(k+1)}=\bm{x}^{(k)}+\alpha_k\bm{p}^{(k)}$
-\STATE Set $\bm{g}^{(k+1)}=g(\bm{x}^{(k+1)})$
-\STATE Set $\bm{p}^{(k)}=-\bm{g}^{(k)}$
-\STATE k=k+1
-\ENDWHILE
+\STATE Choose $0\leq \eta_s<\eta_v<1,\ \gamma_i \geq 1,\ 0\leq \gamma_d\leq 1$
+\STATE given $k=0,\ \Delta_0>0$ and $\bm{x}^{(0)}$
+\REPEAT 
+			\STATE build the secong-order model $q^{(k)}(\bm{s})$ of $f(\bm{x}^{(k)}+\bm{s})$
+			\STATE solve the trust-region subproblem problem(\ref{subp}) to find $\bm{s}^{(k)}$ satisfying condition $q^{(k)}(\bm{s}^{(k)})\leq q^{(k)}(\bm{s_C}^{(k)})$
+			\STATE calculate $\rho_k=\dfrac{f^{(k)}-f(x^{(k)}+s^{(k)})}{q^{(k)}(0)-q^{(k)}(s^{(k)})}$ 						
+			\IF {$\rho_k\geq \eta_v$ \ [\textbf{Very successful}]}
+			\STATE set $\Delta_{k+1}=\gamma_i\Delta_k$
+			\ELSE
+				\IF{$\rho_k\geq \eta_s$ \ [\textbf{Successful}]}
+						\STATE set $\Delta_{k+1}=\Delta_k$
+				\ELSE
+						\STATE set $\Delta_{k+1}=\gamma_d\Delta_k$ \  [\textbf{Unsuccessful}]
+				\ENDIF
+			\ENDIF
+			\IF {$\rho_k\geq 0$}
+				\STATE set $\bm{x}_{k+1}=\bm{x}_{k}$
+				\ELSE
+					\STATE  set $\bm{x}_{k+1}=\bm{x}_{k}-\bm{s}^{(k)}$
+			\ENDIF
+			\STATE set $k=k+1$
+\UNTIL convergence
 \end{algorithmic}  
 \end{algorithm}  
 
+\begin{algorithm}[H]  
+\caption{Steihaug's conjugate gradient method for Problem(6.4)} 
+\label{CG}  
+\begin{algorithmic}[1]  
+\STATE Given $\epsilon>0$;\ set $\bm{x}^{(0)}=\bm{0},\ \bm{r}^{(0)}=\bm{g},\ \bm{p}^{(0)}=-\bm{g}$
+\IF {$\|\bm{r}^{(0)}\|_2<\epsilon$}
+	\RETURN {$\bm{s}'=\bm{x}^{(0)}$}
+\ENDIF
+\FOR{$j=0,1,2,\cdots$}
+	\IF {${\bm{p}^{(j)}}^T\bm{Bp}^{(j)}\leq 0$}
+		\STATE find $\tau$ such that $\bm{s}'=\bm{x}^{(j)}+\tau\bm{p}^{(j)}$ minimizes $q(\bm{s})$ in problem(\ref{subp}) and satisfies $\|\bm{s}'\|_2=\Delta$
+		\RETURN {$\bm{s}'$}
+		\ENDIF	
+		\STATE set $\alpha_j=\dfrac{{\bm{r}^{(j)}}^{T}{\bm{r}^{(j)}}}{{\bm{p}^{(j)}}^{T}\bm{B}{\bm{p}^{(j)}}}$
+		\STATE set $\bm{x}^{(j+1)}=\bm{x}^{(j)}+\alpha_j\bm{p}^{(j)}$
+		\IF {$\|\bm{x}^{(j+1)}\|_2\geq \Delta$}
+		\STATE find $\tau\geq 0$ such that $\bm{s}'=\bm{x}^{(j)}+\tau\bm{p}^{(j)}$ satisfies $\|\bm{s}'\|_2=\Delta$
+		\RETURN {$\bm{s}'$}
+		\ENDIF
+		\STATE set $\bm{r}^{(j+1)}=\bm{r}^{(j)}+\alpha_j\bm{Bp}^{(j)}$
+		\IF {$\|\bm{r}^{(j+1)}\|_2<\epsilon \|\bm{r}^{(0)}\|_2$}
+		\RETURN {$\bm{s}'=\bm{x}^{(j+1)}$}
+		\ENDIF
+		\STATE set $\beta_{j+1}=\dfrac{{\bm{r}^{(j+1)}}^{T}{\bm{r}^{(j+1)}}}{{\bm{r}^{(j)}}^{T}{\bm{r}^{(j)}}}$
+		\STATE $\bm{p}^{(j+1)}=-\bm{r}^{(j+1)}+\beta_{j+1}\bm{p}^{(j)}$
+\ENDFOR
+\end{algorithmic}  
+\end{algorithm}  
+
+
+\newpage
 \subsection{计算结果展示}
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{N=10}
+    \begin{tabular}{ccccccc}
+    \toprule
+    Iteration&$f(\bm{x})$&trust-region radius&stepsize&$\|\bm{g}\|_2$&$\rho$&CG-iterations \\
+    \midrule
+    0     & 10    & 1     &       & 6.324555 &       &  \\
+    1     & 10    & 2     & 1     & 6.324555 & 0.812191 & 1 \\
+    2     & 5.675445 & 4     & 1.056217 & 6.332877 & 1.300613 & 2 \\
+    3     & 2.347849 & 8     & 1.171147 & 3.357787 & 1.209067 & 2 \\
+    4     & 0.789368 & 16    & 0.810145 & 4.631233 & 1.224539 & 2 \\
+    5     & 0.153046 & 32    & 0.624789 & 1.15228 & 1.125204 & 2 \\
+    6     & 0.013082 & 64    & 0.170511 & 1.022822 & 1.059589 & 2 \\
+    7     & 0.000145 & 128   & 0.02598 & 0.044201 & 1.007525 & 2 \\
+    8     & 2.49E-08 & 256   & 0.000257 & 0.001562 & 1.000097 & 2 \\
+    9     & 6.88E-16 & 128   & 0     & 9.77E-08 &       & 0 \\
+    \bottomrule
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
 
-\begin{figure}[H]
-\centering
-\subfigure{
-\includegraphics[width=5.7cm]{fig/1_1a.pdf}}
-\subfigure{
-\includegraphics[width=6cm]{fig/1_1b.pdf}}
-\caption{Steepest-denscent in (0,0)}
-\label{Fig.lable}
-\end{figure}
+为了对比，我调用了MATLAB工具箱中的fminunc()函数，算法采用基于共轭梯度法的信赖域法，列出其迭代过程如下:
 
-\begin{figure}[H]
-\centering
-\subfigure{
-\includegraphics[width=5.7cm]{fig/1_2a.pdf}}
-\subfigure{
-\includegraphics[width=6cm]{fig/1_2b.pdf}}
-\caption{Steepest-denscent in (-0.4,0)}
-\label{Fig.lable}
-\end{figure}
+\begin{lstlisting}
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0                 10                             2                
+     1                 10        3.16228              2           1
+     2            6.01563       0.790569           1.25           0
+     3            2.97068        1.27917           2.22           2
+     4           0.853696       0.923857          0.334           2
+     5           0.266896         1.2293           1.58           2
+     6          0.0122025       0.384531         0.0279           1
+     7        0.000138003       0.235715         0.0435           2
+     8        4.44718e-09     0.00984858       1.69e-05           1
+     9        2.05194e-17    0.000150305       1.68e-08           2
+\end{lstlisting}
 
-\begin{figure}[H]
-\centering
-\subfigure{
-\includegraphics[width=5.7cm]{fig/1_3a.pdf}}
-\subfigure{
-\includegraphics[width=5.8cm]{fig/1_3b.pdf}}
-\caption{Steepest-denscent in (10,0)}
-\label{Fig.lable}
-\end{figure}
+两者对比，迭代步数和每次目标函数的下降量都基本相同，可见我编的程序和MATLAB自带的函数在算法结构上非常接近。
+\newpage
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+ \caption{N=50}
+    \begin{tabular}{ccccccc}
+    \toprule
+    Iteration&$f(\bm{x})$&radius&stepsize&$\|\bm{g}\|_2$&$\rho$&CG-iterations \\
+    \midrule
+    0     & 50    & 1     &      & 14.14213562 &      &  \\
+    1     & 50    & 2     & 1     & 14.14213562 & 0.984781773 & 1 \\
+    2     & 37.05786 & 4     & 2     & 11.68948418 & 0.804697416 & 1 \\
+    3     & 22.52129 & 8     & 2.28296777 & 15.31857086 & 1.281922095 & 2 \\
+    4     & 8.443747 & 16    & 2.75678915 & 5.081230762 & 1.094007275 & 2 \\
+    5     & 2.765399 & 32    & 1.43479805 & 12.67722532 & 1.15401492 & 2 \\
+    6     & 0.379998 & 64    & 1.14908213 & 1.009105153 & 1.059206925 & 2 \\
+    7     & 0.020607 & 128   & 0.17192834 & 1.655223973 & 1.020742334 & 2 \\
+    8     & 5.03E-05 & 256   & 0.01586025 & 0.012745341 & 1.001393839 & 2 \\
+    9     & 5.55E-10 & 512   & 2.90E-05 & 0.00028184 & 1.000003585 & 2 \\
+    10    & 3.99E-20 & 256   & 0     & 3.60E-10 &    & 0 \\
+     \bottomrule
+    \end{tabular}%
+  \label{tab:addlabe2}%
+\end{table}%
 
-\begin{figure}[H]
-\centering
-\subfigure{
-\includegraphics[width=5.8cm]{fig/1_4a.pdf}}
-\subfigure{
-\includegraphics[width=5.9cm]{fig/1_4b.pdf}}
 
-\caption{Steepest-denscent in (11,0)}
-\label{Fig.lable}
-\end{figure}
+\begin{lstlisting}
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0                 50                             2                
+     1                 50        7.07107              2           1
+     2            30.0781        1.76777           1.25           0
+     3            14.8534        2.86032           2.22           2
+     4            4.26848        2.06581          0.334           2
+     5            1.33448        2.74879           1.58           2
+     6          0.0610125       0.859837         0.0279           1
+     7        0.000690016       0.527076         0.0435           2
+     8        2.22361e-08      0.0220221       1.69e-05           1
+     9        1.02351e-16    0.000336094       1.68e-08           2
+\end{lstlisting}
 
-\begin{table}[H]
-\centering
-\caption{收敛因子比较}
-	\begin{tabular}{ccccc}
-	\toprule
-	{起始点}&$(0,0)$&$(-0.4,0)$&$(10,0)$&$(11,0)$\\
-	\midrule
-	{收敛因子}&0.762255&0.810000&0.000390&0\\
-	\bottomrule
-	\end{tabular}
-\end{table}
+\newpage
+\subsection{总结分析}
+\subsection*{原理分析}
+本算法的原理是构造一个信赖域区域，使得这个区域上，用求解原函数$f(\bm{x})$的二次函数模型$q(\bm{s})$的极小点来代替求原函数的极小点，若以此求得的真实下降量$\delta f^{(k)}$比预计下降量$\delta q^{(k)}$小得多，则说明信赖域区域过大，需要缩小信赖域半径，因为我们知道，信赖域半径越小，在这片信赖域区域上二次函数模型与原函数拟合得越好。
 
-\subsection*{分析：}
-由于目标函数为凸函数，故使用梯度下降法从这四个不同的起始点出发都能收敛到全局最优点，然而线性收敛因子却互不相同.
+由信赖域法的大范围收敛性可知，在本题中信赖域法最终能收敛，那么需要考虑的是如何求解子问题Subproblem(\ref{subp})，Steihaug共轭梯度法是一个非常不错的方法：由于极小化目标函数是二次函数，故共轭梯度法有二次收敛性。需要考虑的情况是：共轭梯度法要求Hessian阵对称且正定，但是在信赖域区域内不一定能保证Hessian阵的正定性。观察Steihaug共轭梯度法算法(\textbf{Algorithm} \ref{CG})，即使$\bm{B}$非正定，如果$\bm{p^TBp}>0$，那么对我们的迭代情况也没有影响，当$\bm{p^TBp}\leq 0$时，这时我们需要分情况考虑：
 
-由图像可知：在迭代开始后，函数值的收敛速度稳定在一个值左右，直到接近最优点时，收敛速度开始较大幅度波动。
+\begin{itemize}
+\item
+若$\bm{p^TBp}=0$，Subproblem(\ref{subp})转化为 \ minimizes\ $q(\bm{s})=f+\bm{g^Ts}$，此时目标函数为一次函数，故极大值与极小值都在信赖域边界上取到
 
-而且，可以看出，初始点越接近等值线椭圆的狭长端，线性收敛因子越大，在点$(-0.4,0)$处甚至达到了线性收敛因子的上界0.81,而离狭长端越远，收敛因子越小。
-这是由于梯度下降在构造搜索方向时没有充分利用到函数的二阶导数信息，在面临“峡谷”状的函数时，会反复震荡到“峡谷”的另一端，而不能直接向最优值方向前进。
+\item
+若$\bm{p^TBp}<0$，Subproblem(\ref{subp})中$q(\bm{s})=f+\bm{g}^{T}\bm{s}+\dfrac{1}{2}\bm{s}^T\bm{Bs}$，目标函数为严格的二次凸函数，此时极小值必定也在信赖域边界上取到
+\end{itemize}
 
-容易看出，等值线椭圆的长轴端斜率为$9/10$，且$(-0.4,0)=(5,6)-0.6*(9,10)$，这说明点$(-0.4,0)$刚好处在等值线椭圆的长轴上，因此也是震荡最剧烈的地方，收敛速度达到了最坏收敛速度。
+因此，当$\bm{p^TBp}\leq 0$时，我们就不需要使用共轭梯度法了，只需沿着$\bm{p}$方向直到信赖域边界就能得到子问题的解，可见配合CG法的信赖域法威力巨大。
+
+\subsection*{结果分析}
+首先，所有程序的初始点都为零点，其他基本参数如下：\[\eta_{s}=0.25,\eta_{v}=0.75,\ \gamma_{i}=2,\ 
+\gamma_{d}=0.5,\ \Delta_0=1\]
+
+\begin{itemize}
+\item
+从迭代过程来看，每次单独调用CG法时都迭代不到两次，由此CG法对二次函数的二次终止性得到了很好的体现。
+
+\item
+在迭代后期，每迭代一次，$f(\bm{x})$的有效数字位数就几乎翻一倍，充分体现了该信赖域法的二阶收敛性.
+
+\item
+此外，基本上每一次迭代都有非常大幅度的下降，$\rho$值稳定大于0.75，这使得信赖域法基本上不需要太多步数就能平稳迭代到极小点附近。
+
+\item
+但是，信赖域半径一直都在增大，似乎没有体现出其作用，我将初始点移到$[5,5,\cdots,5]$，程序运行的详细结果如下：
+\end{itemize}
+\begin{lstlisting}
+Iteration:0
+f(x)=40160.000000      radius:1.000000      g(x)=12737.371785
+
+抵达信赖域边界
+Iteration:1	   Very successful
+f(x)= 40160.000000     radius: 2.000000     p= 1.005468
+g(x)=1.000000        stepsize= 1.005468     CG-iterations:  1 
+
+抵达信赖域边界
+Iteration:2	   Very successful
+f(x)= 28767.719768     radius: 4.000000     p= 1.029750
+g(x)=2.000000        stepsize= 1.029750     CG-iterations:  1 
+
+抵达信赖域边界
+Iteration:3	   Very successful
+f(x)= 12989.966845     radius: 8.000000     p= 1.154216
+g(x)=4.000000        stepsize= 1.154216     CG-iterations:  2 
+
+抵达信赖域边界
+Iteration:4	   Very successful
+f(x)= 1341.525608     radius: 16.000000     p= 1.012344
+g(x)=8.000000        stepsize= 1.012344     CG-iterations:  2 
+
+满足条件
+Iteration:5	   Very successful
+f(x)= 40.060704     radius: 32.000000     p= 1.227658
+g(x)=7.931609        stepsize= 1.227658     CG-iterations:  2 
+
+满足条件
+Iteration:6	   Very successful
+f(x)= 26.061587     radius: 64.000000     p= 1.325788
+g(x)=4.099658        stepsize= 1.325788     CG-iterations:  2 
+
+满足条件
+Iteration:7	   Very successful
+f(x)= 14.878198     radius: 128.000000     p= 0.953520
+g(x)=5.894623        stepsize= 0.953520     CG-iterations:  2 
+
+满足条件
+Iteration:8	   Very successful
+f(x)= 9.239741     radius: 256.000000     p= 1.185667
+g(x)=1.263124        stepsize= 1.185667     CG-iterations:  2 
+
+满足条件
+Iteration:9	   Successful
+f(x)= 3.616542     radius: 256.000000     p= 0.300561
+g(x)=4.126884        stepsize= 0.300561     CG-iterations:  2 
+
+满足条件
+Iteration:10	   Very successful
+f(x)= 2.885923     radius: 512.000000     p= 1.027753
+g(x)=0.203579        stepsize= 1.027753     CG-iterations:  2 
+
+满足条件
+Iteration:11	   Very successful
+f(x)= 0.228649     radius: 1024.000000     p= 0.844724
+g(x)=1.139644        stepsize= 0.844724     CG-iterations:  2 
+
+满足条件
+Iteration:12	   Very successful
+f(x)= 0.043943     radius: 2048.000000     p= 1.002073
+g(x)=0.039133        stepsize= 1.002073     CG-iterations:  2 
+
+满足条件
+Iteration:13	   Very successful
+f(x)= 0.000038     radius: 4096.000000     p= 1.000397
+g(x)=0.013722        stepsize= 1.000397     CG-iterations:  2 
+
+满足条件
+Iteration:14	   Very successful
+f(x)= 0.000000     radius: 8192.000000     p= 1.000000
+g(x)=0.000007        stepsize= 1.000000     CG-iterations:  2 
+
+满足条件
+Iteration:15	   Very successful
+f(x)= 0.000000     radius: 16384.000000     p= 1.000000
+g(x)=0.000000        stepsize= 1.000000     CG-iterations:  0 
+
+最优值为0.000000
+求解子问题15次
+
+[Very successful]:14
+[Successful]:1
+[Unsuccessful]:0
+\end{lstlisting}
+
+\begin{lstlisting}
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0              40160                      4.01e+03                
+     1            4256.11             10            986           2
+     2            76.8143        19.9262           5.61           2
+     3            76.8143             40           5.61           2
+     4            57.4317             10           24.2           0
+     5             43.728        12.4371           43.3           2
+     6            23.8548        2.64022           7.66           1
+     7            23.8548         13.077           7.66           2
+     8            17.6236        3.26924           4.85           0
+     9            11.1049        6.53848           15.5           2
+    10            4.92887          1.797           3.84           1
+    11            3.44482        4.37109           8.91           2
+    12           0.496164       0.224523          0.677           1
+    13           0.173344        1.68104           1.72           2
+    14         0.00076105      0.0704703          0.022           1
+    15        5.75941e-07      0.0616102        0.00306           2
+    16        8.68878e-15    0.000131431       7.41e-08           1
+\end{lstlisting}
+\begin{lstlisting}
+                                                        First-order 
+ Iteration  Func-count       f(x)        Step-size       optimality
+     0          21            40160                      4.01e+03
+     1          42          11971.4    0.000249501       1.75e+03  
+     2          63          2737.67              1            673  
+     3          84          513.739              1            244  
+     4         105          70.1393              1           71.7  
+     5         126          19.4656              1           13.9  
+     6         147          17.3268              1           1.24  
+     7         168          17.3105              1          0.541  
+     8         210          17.3013             10          0.699  
+     9         252          17.1533             10           2.32  
+    10         273          16.5864              1            4.9  
+    11         357          3.97922        3.30318           4.17  
+    12         399          3.89088       0.125372           5.73  
+    13         441          2.00887             10           3.05  
+    14         462         0.990257              1           3.47  
+    15         483         0.256308              1          0.184  
+    16         525        0.0769148       0.608615          0.878  
+    17         546        0.0257717              1          0.514  
+    18         567       0.00183119              1         0.0216  
+    19         588      0.000389842              1         0.0646  
+    20         609      8.53839e-07              1        0.00263  
+\end{lstlisting}
+
+由输出结果可以看到：前4次的信赖域子问题的最优解都在信赖域的边界上，通过4次迭代后，目标函数值已经降到了1341，由于目标函数是高度病态的Rosenbrock函数，这个函数值表明迭代点已经移动到了离全局极小点非常近的地方，然后CG法不断抵达二次模型函数的极小点，来逼近真正的全局极小点，误差值几乎翻倍减小，最终减到0.
+
+\begin{lstlisting}
+%信赖域共轭梯度法
+options=optimset('Display','iter','GradObj','on','Algorithm','trust-region');
+
+%拟牛顿法
+options=optimoptions(@fminunc,'Display','iter','Algorithm','quasi-newton');
+\end{lstlisting}
+
+可以看到，在输出的运行结果后面，还跟着两个程序的迭代过程，那是为了进行对比，所以我分别调用了优化工具箱中的信赖域共轭梯度法和拟牛顿法来求解这个问题，并将迭代结果输出在上面。并且我还将三个程序的运行时间取平均值记录如下：
+
+\begin{table}[htbp]
+  \centering
+ \caption{时间花费}
+    \begin{tabular}{cccc}
+    \toprule
+    程序&信赖域CG法(自己编的)&信赖域CG法(工具箱)&拟牛顿法(工具箱)\\
+     \midrule
+    时间(s)&9.067 &1.1001&1.0248\\
+    \bottomrule
+    \end{tabular}%
+  \label{tab:addlabe3}%
+\end{table}%
+
+可以看出：两个自带函数的运行速度完爆我亲自编写的程序，快了一个数量级，简直伤自尊。另外，在相同迭代次数内，共轭梯度法比拟牛顿法达到的精度更高，但拟牛顿法的时间花费稍微要少一些，但这点微不足道的时间差异几乎可以忽略不计，为了更好地测试两个算法的性能，于是我将$n$调到100，将初始点定为$-500\times[1,1,\cdots,1]$，再进行测试：
+
+\begin{table}[htbp]
+  \centering
+ \caption{时间花费}
+    \begin{tabular}{cccc}
+    \toprule
+    程序&信赖域CG法&拟牛顿法\\
+     \midrule
+    Time(s) &9.023&5.224\\
+    Iteration&104&30\\
+    Fval&4.41532e-13&25584.6\\
+    \bottomrule
+    \end{tabular}%
+  \label{tab:addlabe3}%
+\end{table}%
+
+发现拟牛顿法这次居然没有收敛到全局极小点$[0,0,0\cdots,0]$，而是\[(15.6297,242.3277,15.6297,242.3277,15.6297,242.3277,\cdots,242.3277)\] 
+程序报告显示在该点处梯度值为3.250348e-07，达到了默认的 Optimality Tolerance = 1.000e-06，所以就默认其为局部极小点。
+
+而信赖域CG法经受住了考验，完美地收敛到了全局极小点$[0,0,0\cdots,0]$，仅花了一百多步，不得不让人赞叹。
+
+而且，信赖域CG法不需要正定的Hessian阵，通用性极强，集大范围收敛性及快速收敛性于一身，并且单次迭代所需时间短\footnote{我猜测MATLAB自带的信赖域CG法运行那么快的原因是对二次方程求根进行了优化，除了这个之外其他似乎没什么地方比较耗时间了}，确实是一个很完美的算法.

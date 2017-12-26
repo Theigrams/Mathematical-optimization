@@ -174,3 +174,49 @@ Step[22]: x=[ 1.000000 1.000000 ] optim_fx=0.000000
 %最优解:
 x=[ 1.000000e+00 1.000000e+00 ] optim_fx=0.000000
 \end{lstlisting}
+
+\newpage
+\subsection{牛顿法总结分析}
+在面临梯度变化特别大的情况时，最速下降法显得非常不尽人意，即使在离稳定点非常近的地方依旧不能快速收敛，而是呈锯齿状不断摇摆。由我们所学的知识可以知道，最速下降法的收敛速度强烈依赖于Hessian矩阵的条件数，条件数越高，等值圆越扁，最速下降法的锯齿现象就越明显，这一点可以直观地从图像上看出来。
+
+而牛顿法显得更加“聪明”，因为它利用到了函数的二阶信息，从某种角度来说，最速下降法是将函数在该点用一次函数模型去逼近，然后小心翼翼地迈出一小步，而牛顿法则是在该点用二次函数模型去逼近，然后求解模型函数的极小点，来逼近真正的极小点，这与信赖域法有异曲同工之妙。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{fig/4_5.pdf}
+\caption{函数$f$\ (实线)和它在$x$处的二阶近似$\hat{f}\ $(虚线)}
+\end{figure}
+
+另外，Newton步方向也是在$x$处采用Hessian范数下的的最速下降方向:
+\begin{alignat}{2}
+\min \quad &\bm{g^Tp} \nonumber\\
+\mbox{s.t.}\quad
+&\|\bm{p}\|_{\nabla^2f(\bm{x})}=(\bm{p}^T\nabla^2f(\bm{x})\bm{p})^{1/2}=1\nonumber
+\end{alignat}
+
+设$\nabla^2f(\bm{x})=\bm{G}$，若$\bm{G}$正定，则可进行Cholesky分解，得$\bm{G}=L^TL$,其中L是上三角矩阵，则原约束条件变为$p^TL^TLp=1\ \Rightarrow \|LP\|_2=1$，设$\bm{v}=LP$，则原优化问题变为：
+\begin{alignat}{2}
+\min \quad &\bm{g^TL^{-1}v} \nonumber\\
+\mbox{s.t.}\quad
+&\|\bm{v}\|_2=1\nonumber
+\end{alignat}
+易得:
+\begin{align}
+v&=-\dfrac{L^{-1}g}{\|L^{-1}g\|_2}\nonumber\\
+p&=L^{-1}v=-\dfrac{{L^TL}^{-1}g}{\|L^{-1}g\|_2}\nonumber\\
+&=-\dfrac{G^{-1}g}{\|L^{-1}g\|_2}\nonumber
+\end{align}
+
+即$p=-\dfrac{G^{-1}g}{\|L^{-1}g\|_2}$为Newton步方向.
+
+那么，Hessian范数下的的最速下降方向的优越性体现在哪里呢？在这里，我们可以通过坐标变换给出一个有意义的解释:设$\bar{x}=Lx$
+\[\|x\|_G=xGx=\|Lx\|_2=\|\bar{x}\|_2\]
+故$x$的G—范数就相当于坐标变换后的$\bar{x}$的2—范数
+\[\text{定义函数}\bar{f}(\bar{x})=f(L^{-1}\bar{x})=f(x)\]
+\[\nabla \bar{f}(\bar{x})=\nabla f(L^{-1}\bar{x})=L^{-T}\nabla f(L^{-1}\bar{x})=L^{-T}\nabla f(x)\]
+那么在变换坐标系下沿$\bar{f}$的最速下降方向为$-L^{-T}\nabla f(x)$，换回原坐标系后的方向为$-L^{-1}(L^{-T}\nabla f(x))=-G^{-1}\nabla f(x)$，即Newton步方向
+\[\nabla^2 \bar{f}(\bar{x})=\nabla^2 
+f(L^{-1}\bar{x})=L^{-T}\nabla^2f(x)L^{-1}\]
+那么在变换坐标系下沿$\bar{f}$的Hessian阵为\[L^{-T}GL^{-1}=L^{-T}L^TLL^{-1}=\bm{I}\]
+
+其几何意义就是先在$x$点处根据其Hessian阵进行坐标变换，将原来的椭圆等值线变换为标准的圆形等值线，即变换后的Hessian阵为单位阵，在此基础上进行最速下降法，由于等值线是标准的圆形，因此一次梯度下降就能抵达圆心，即迭代到了二次模型函数的最小点.

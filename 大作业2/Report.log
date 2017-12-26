@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  25 DEC 2017 04:50
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2017.6.5)  27 DEC 2017 03:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2194,38 +2194,72 @@ Package: xeCJK-listings 2017/05/15 v3.4.8 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count354
 \l__xeCJK_listings_flag_int=\count355
 )
-(./Report.aux (./P5.aux))
+(./Report.aux (./P1.aux
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+) (./P2.aux
+
+LaTeX Warning: Label `tab:addlabel' multiply defined.
+
+) (./P3.aux) (./P4.aux
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+
+LaTeX Warning: Label `Fig.lable' multiply defined.
+
+) (./P5.aux) (./P6.aux) (./P7.aux
+
+LaTeX Warning: Label `tab:addlabel' multiply defined.
+
+
+LaTeX Warning: Label `tab:addlabe3' multiply defined.
+
+))
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 9.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 4.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 4.
  (c:/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 9.
+LaTeX Info: Redefining \selectfont on input line 4.
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -2233,63 +2267,63 @@ LaTeX Info: Redefining \selectfont on input line 9.
 .................................................
 \symlegacymaths=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 9.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 9.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 9.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 9.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 9.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 9.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 9.
-LaTeX Font Info:    Redeclaring math accent \check on input line 9.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 9.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 9.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 9.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 9.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 9.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 4.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 4.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 4.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 4.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 4.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 4.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 4.
+LaTeX Font Info:    Redeclaring math accent \check on input line 4.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 4.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 4.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 4.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 4.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 4.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 9.
+(Font)              `operators' in the math version `normal' on input line 4.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 9.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 4.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 9.
+(Font)              `operators' in the math version `bold' on input line 4.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 9.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 4.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 9.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 9.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 9.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 9.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 9.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 4.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 9.
+(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 9.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 9.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 9.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 4.
 \c@lstlisting=\count356
 \AtBeginShipoutBox=\box91
  ABD: EveryShipout initializing macros
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 9.
-Package hyperref Info: Link coloring ON on input line 9.
+(lastpage)             ! on input line 4.
+Package hyperref Info: Link coloring ON on input line 4.
 
 (c:/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -2299,14 +2333,16 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count357
 )
-LaTeX Info: Redefining \ref on input line 9.
-LaTeX Info: Redefining \pageref on input line 9.
-LaTeX Info: Redefining \nameref on input line 9.
+LaTeX Info: Redefining \ref on input line 4.
+LaTeX Info: Redefining \pageref on input line 4.
+LaTeX Info: Redefining \nameref on input line 4.
 
 (./Report.out) (./Report.out)
 \@outlinefile=\write5
 \openout5 = `Report.out'.
 
+File: fig/logo.jpg Graphic file (type QTm)
+ <use  "fig/logo.jpg" >
 \g__fontspec_family_SimHei_int=\count358
 .................................................
 . fontspec info: "no-font-shape"
@@ -2334,12 +2370,16 @@ LaTeX Info: Redefining \nameref on input line 9.
 . - 'normal' (m/n) with NFSS spec.: <->"SimHei/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
-LaTeX Font Info:    Try loading font information for U+msa on input line 11.
 
+
+LaTeX Font Warning: Font shape `TU/SimHei(0)/bx/n' undefined
+(Font)              using `TU/SimHei(0)/m/n' instead on input line 13.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
 
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2372,32 +2412,84 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 .................................................
  [1
 
-] (./Report.toc)
-\tf@toc=\write6
-\openout6 = `Report.toc'.
-
+] (./Report.toc
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not avail
 able
 (Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 
-17.
+30.
 
-[2]
-\openout2 = `P5.aux'.
+[2])
+\tf@toc=\write6
+\openout6 = `Report.toc'.
 
- (./P5.tex [3
+ [3]
+\openout2 = `P1.aux'.
+
+ (./P1.tex
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 14.
+File: fig/1_1a.pdf Graphic file (type QTm)
+ <use  "fig/1_1a.pdf" >
+File: fig/1_1b.pdf Graphic file (type QTm)
+ <use  "fig/1_1b.pdf" > [4
 
 ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 25.
-File: fig/5_1.pdf Graphic file (type QTm)
- <use  "fig/5_1.pdf" > [4]
-File: fig/5_2.pdf Graphic file (type QTm)
- <use  "fig/5_2.pdf" >
-File: fig/5_3.pdf Graphic file (type QTm)
+File: fig/1_2a.pdf Graphic file (type QTm)
 
-<use  "fig/5_3.pdf" > [5]
-File: fig/5_4.pdf Graphic file (type QTm)
- <use  "fig/5_4.pdf" > [6]
+<use  "fig/1_2a.pdf" >
+File: fig/1_2b.pdf Graphic file (type QTm)
+ <use  "fig/1_2b.pdf" >
+File: fig/1_3a.pdf Graphic file (type QTm)
+ <use  "fig/1_3a.pdf" >
+File: fig/1_3b.pdf Graphic file (type QTm)
+
+<use  "fig/1_3b.pdf" > [5]
+File: fig/1_4a.pdf Graphic file (type QTm)
+ <use  "fig/1_4a.pdf" >
+File: fig/1_4b.pdf Graphic file (type QTm)
+ <use  "fig/1_4b.pdf" >
+[6]
+File: fig/1_6.pdf Graphic file (type QTm)
+ <use  "fig/1_6.pdf" > [7]
+File: fig/1_5.pdf Graphic file (type QTm)
+ <use  "fig/1_5.pdf" > [8]) [9]
+\openout2 = `P2.aux'.
+
+ (./P2.tex
+Overfull \hbox (36.38528pt too wide) in paragraph at lines 37--51
+ [][][] 
+ []
+
+File: fig/2_1.pdf Graphic file (type QTm)
+<use  "fig/2_1.pdf" > [10
+
+
+] [11]
+File: fig/2_2.pdf Graphic file (type QTm)
+ <use  "fig/2_2.pdf" >
+File: fig/2_3.pdf Graphic file (type QTm)
+ <use  "fig/2_3.pdf" >
+[12] [13]) [14]
+\openout2 = `P3.aux'.
+
+ (./P3.tex
+Overfull \hbox (75.48274pt too wide) in paragraph at lines 29--29
+[] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: fig/3_1.pdf Graphic file (type QTm)
+<use  "fig/3_1.pdf" > [15
+
+
+] [16]
+File: fig/3_2.pdf Graphic file (type QTm)
+ <use  "fig/3_2.pdf" > [17]
 \g__fontspec_family_FangSong_int=\count360
 .................................................
 . fontspec info: "no-font-shape"
@@ -2426,40 +2518,192 @@ File: fig/5_4.pdf Graphic file (type QTm)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
+) [18]
+\openout2 = `P4.aux'.
+
+ (./P4.tex
+File: fig/4_01.pdf Graphic file (type QTm)
+
+<use  "fig/4_01.pdf" >
+File: fig/4_02.png Graphic file (type QTm)
+ <use  "fig/4_02.png" > [19
+
+
+] [20]
+File: fig/4_11.pdf Graphic file (type QTm)
+ <use  "fig/4_11.pdf" >
+File: fig/4_12.pdf Graphic file (type QTm)
+
+<use  "fig/4_12.pdf" >
+File: fig/4_13.pdf Graphic file (type QTm)
+ <use  "fig/4_13.pdf" >
+File: fig/4_14.pdf Graphic file (type QTm)
+ <use  "fig/4_14.pdf" >
+File: fig/4_21.pdf Graphic file (type QTm)
+
+<use  "fig/4_21.pdf" >
+File: fig/4_22.pdf Graphic file (type QTm)
+ <use  "fig/4_22.pdf" >
+File: fig/4_23.pdf Graphic file (type QTm)
+ <use  "fig/4_23.pdf" >
+File: fig/4_24.pdf Graphic file (type QTm)
+
+<use  "fig/4_24.pdf" > [21]
+File: fig/4_31.pdf Graphic file (type QTm)
+ <use  "fig/4_31.pdf" >
+File: fig/4_32.pdf Graphic file (type QTm)
+ <use  "fig/4_32.pdf" >
+File: fig/4_33.pdf Graphic file (type QTm)
+
+<use  "fig/4_33.pdf" >
+File: fig/4_34.pdf Graphic file (type QTm)
+ <use  "fig/4_34.pdf" > [22]
+File: fig/4_41.pdf Graphic file (type QTm)
+ <use  "fig/4_41.pdf" >
+File: fig/4_42.pdf Graphic file (type QTm)
+
+<use  "fig/4_42.pdf" >
+File: fig/4_43.pdf Graphic file (type QTm)
+ <use  "fig/4_43.pdf" >
+File: fig/4_44.pdf Graphic file (type QTm)
+ <use  "fig/4_44.pdf" > [23]
+[24]
+File: fig/4_5.pdf Graphic file (type QTm)
+ <use  "fig/4_5.pdf" > [25]) [26]
+\openout2 = `P5.aux'.
+
+ (./P5.tex [27
+
+
+]
+File: fig/5_1.pdf Graphic file (type QTm)
+ <use  "fig/5_1.pdf" >
+[28]
+File: fig/5_2.pdf Graphic file (type QTm)
+ <use  "fig/5_2.pdf" >
+File: fig/5_3.pdf Graphic file (type QTm)
+ <use  "fig/5_3.pdf" > [29]
+File: fig/5_4.pdf Graphic file (type QTm)
+ <use  "fig/5_4.pdf" >
+[30]
 File: fig/5_5.pdf Graphic file (type QTm)
- <use  "fig/5_5.pdf" >
-[7]
+ <use  "fig/5_5.pdf" > [31]
 File: fig/5_7.pdf Graphic file (type QTm)
- <use  "fig/5_7.pdf" > [8]
-Overfull \hbox (11.16199pt too wide) in paragraph at lines 159--167
+ <use  "fig/5_7.pdf" > [32]
+Overfull \hbox (11.16199pt too wide) in paragraph at lines 158--166
  [][] 
  []
 
 File: fig/5_6.pdf Graphic file (type QTm)
 <use  "fig/5_6.pdf" >
-Overfull \hbox (10.65944pt too wide) in paragraph at lines 173--174
+Overfull \hbox (10.65944pt too wide) in paragraph at lines 172--173
  [][] 
  []
 
 File: fig/5_8.pdf Graphic file (type QTm)
-<use  "fig/5_8.pdf" > [9]
+<use  "fig/5_8.pdf" > [33]
 File: fig/5_9.pdf Graphic file (type QTm)
- <use  "fig/5_9.pdf" >) [10]
+ <use  "fig/5_9.pdf" >) [34]
+\openout2 = `P6.aux'.
 
+ (./P6.tex [35
+
+
+]
+File: fig/6_3.pdf Graphic file (type QTm)
+
+<use  "fig/6_3.pdf" >
+File: fig/6_4.pdf Graphic file (type QTm)
+ <use  "fig/6_4.pdf" > [36]
+File: fig/6_5.pdf Graphic file (type QTm)
+ <use  "fig/6_5.pdf" > [37]
+File: fig/6_6.pdf Graphic file (type QTm)
+
+<use  "fig/6_6.pdf" > [38]
+File: fig/6_1.pdf Graphic file (type QTm)
+ <use  "fig/6_1.pdf" >
+File: fig/6_7.pdf Graphic file (type QTm)
+ <use  "fig/6_7.pdf" > [39]
+File: fig/6_2.pdf Graphic file (type QTm)
+
+<use  "fig/6_2.pdf" >
+File: fig/6_8.pdf Graphic file (type QTm)
+ <use  "fig/6_8.pdf" > [40]) [41]
+\openout2 = `P7.aux'.
+
+ (./P7.tex
+Overfull \hbox (49.99911pt too wide) detected at line 22
+\OML/cmm/m/it/10.53937 f\OT1/cmr/m/n/10.53937 (\OML/cmm/b/it/10.53937 x\OT1/cmr
+/m/n/10.53937 ) = [][] + [][] + [][] + 10 [][] + 10 [][] + 10 [][]
+ []
+
+[42
+
+
+]
+Overfull \hbox (85.65125pt too wide) detected at line 27
+[]
+ []
+
+[43] [44] [45]
+Overfull \hbox (87.23128pt too wide) in paragraph at lines 118--135
+ [][][] 
+ []
+
+[46]
+Overfull \hbox (71.7384pt too wide) in paragraph at lines 160--178
+ [][][] 
+ []
+
+[47] [48] [49] [50] [51]
+Overfull \hbox (19.87346pt too wide) in paragraph at lines 368--370
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.83965pt too wide) in paragraph at lines 371--372
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (52.73837pt too wide) in paragraph at lines 379--387
+ [][][] 
+ []
+
+[52]
+Overfull \hbox (7.05925pt too wide) in paragraph at lines 409--410
+[]\TU/SimSun(0)/m/n/10.53937 而 信 赖 域 \TU/lmr/m/n/10.53937 CG \TU/SimSun(0)/m/n/
+10.53937 法 经 受 住 了 考 验，|  完 美 地 收 敛 到 了 全 局 极 小 点 $\OT1/cmr/m/n/10.53937 [0\OML
+/cmm/m/it/10.53937 ; \OT1/cmr/m/n/10.53937 0\OML/cmm/m/it/10.53937 ; \OT1/cmr/m
+/n/10.53937 0 []  \OML/cmm/m/it/10.53937 ; \OT1/cmr/m/n/10.53937 0]$\TU/SimSun(
+0)/m/n/10.53937 ，|
+ []
+
+) [53] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 19.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 19.
-(./Report.aux (./P5.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 19.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 19.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
+(./Report.aux (./P1.aux) (./P2.aux) (./P3.aux) (./P4.aux) (./P5.aux) (./P6.aux)
+(./P7.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 53.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 53.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 41746 strings out of 493005
- 802095 string characters out of 6137957
- 875064 words of memory out of 5000000
- 45025 multiletter control sequences out of 15000+600000
- 17383 words of font info for 98 fonts, out of 8000000 for 9000
+ 42350 strings out of 493005
+ 813950 string characters out of 6137957
+ 943507 words of memory out of 5000000
+ 45527 multiletter control sequences out of 15000+600000
+ 24848 words of font info for 132 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 69i,11n,68p,10451b,1084s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,17n,68p,10451b,1784s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Report.pdf (10 pages).
+Output written on Report.pdf (53 pages).

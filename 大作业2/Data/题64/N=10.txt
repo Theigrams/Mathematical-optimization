@@ -1,0 +1,70 @@
+N=10
+初始点为X=zeros(20,1)
+
+Iteration:0	f(x)=10.000000     trust region radius:1.000000      g: 6.324555
+抵达信赖域边界
+Very successful
+Iteration:1	f(x)= 10.000000     trust region radius: 2.000000 
+  stepsize= 1.000000     g: 6.324555	 p= 0.812191   CG-iterations:  1 
+
+满足条件
+Very successful
+Iteration:2	f(x)= 5.675445     trust region radius: 4.000000 
+  stepsize= 1.056217     g: 6.332877	 p= 1.300613   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:3	f(x)= 2.347849     trust region radius: 8.000000 
+  stepsize= 1.171147     g: 3.357787	 p= 1.209067   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:4	f(x)= 0.789368     trust region radius: 16.000000 
+  stepsize= 0.810145     g: 4.631233	 p= 1.224539   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:5	f(x)= 0.153046     trust region radius: 32.000000 
+  stepsize= 0.624789     g: 1.152280	 p= 1.125204   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:6	f(x)= 0.013082     trust region radius: 64.000000 
+  stepsize= 0.170511     g: 1.022822	 p= 1.059589   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:7	f(x)= 0.000145     trust region radius: 128.000000 
+  stepsize= 0.025980     g: 0.044201	 p= 1.007525   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:8	f(x)= 0.000000     trust region radius: 256.000000 
+  stepsize= 0.000257     g: 0.001562	 p= 1.000097   CG-iterations:  2 
+
+满足条件
+Very successful
+Iteration:9	f(x)= 0.000000     trust region radius: 512.000000 
+  stepsize= 0.000000     g: 0.000000	 p= 1.000000   CG-iterations:  0 
+
+
+最优值为0.000000
+求解子问题9次
+
+[Very successful]:9
+[Successful]:0
+[Unsuccessful]:0
+
+  Iteration     f(x)   radius    stepsize        g	      p	    CG-iterations 
+         0   10.0000    1.0000         0    6.3246         0         0
+    1.0000   10.0000    2.0000    1.0000    6.3246    0.8122    1.0000
+    2.0000    5.6754    4.0000    1.0562    6.3329    1.3006    2.0000
+    3.0000    2.3478    8.0000    1.1711    3.3578    1.2091    2.0000
+    4.0000    0.7894   16.0000    0.8101    4.6312    1.2245    2.0000
+    5.0000    0.1530   32.0000    0.6248    1.1523    1.1252    2.0000
+    6.0000    0.0131   64.0000    0.1705    1.0228    1.0596    2.0000
+    7.0000    0.0001  128.0000    0.0260    0.0442    1.0075    2.0000
+    8.0000    0.0000  256.0000    0.0003    0.0016    1.0001    2.0000
+    9.0000    0.0000  512.0000         0    0.0000    1.0000         0
+
+>> 

@@ -15,10 +15,10 @@ fyx=diff(fy,x1); %求二阶偏导数 对x2再对x1
 fyy=diff(fy,x2); %求二阶偏导数 对x2再对x2
 Gradient=[fx;fy];     %计算梯度表达式
 Hesse=[fxx,fxy;fyx,fyy];
-x=[35/3,0];        %定义初始点
+x=[-0.4,0];        %定义初始点
 
 %%
-N=200;     %总迭代次数
+N=20;     %总迭代次数
 e=0.000001;
 P=zeros(N,2);    %储存点的轨迹
 
@@ -69,9 +69,13 @@ xx =linspace(-1,12);
 yy = linspace(-1,7);
 [X,Y] = meshgrid(xx,yy);
 Z=F(X,Y);
+
+contour(X,Y,Z,50)
 plot(5,6,'rd')
-contour(X,Y,Z,'ShowText','on')
-legend('q contours','minimum')
+
+% fplot(@(x) (9/10)*(x-5)+6)
+% fplot(@(x) (10/9)*(x-5)+6)
+legend('Iteration','q contours','minimum','L_1','L_2')
 figure;
 plot(OPT)
 xlabel('n/迭代次数')
