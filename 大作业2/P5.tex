@@ -112,7 +112,7 @@ norm(H*H_inv-I)
 
 另外，我们由书本知识可以知道:共轭梯度法与特征值的分布有关，当特征值分布较密集时，相同步数迭代精度更高。所以我们可以对Hilbert矩阵进行预处理，降低其条件数。
 
-嗯，那如何对Hilbert矩阵进行预处理呢？我在网上经过不懈的搜索，终于在Alfi Quarteroni Fausto Saleri的 Scientifi Computing with MATLAB and Octave中找到这么一个题目(见图\ref{exam})，题目中点出可以用Hilbert矩阵对角元素构建一个对角矩阵，作为预处理矩阵。
+嗯，那如何对Hilbert矩阵进行预处理呢？我在网上经过不懈的搜索，终于在Alfi Quarteroni的\emph{Scientifi Computing with MATLAB and Octave}中找到这么一个题目(见图\ref{exam})，题目中点出可以用Hilbert矩阵对角元素构建一个对角矩阵，作为预处理矩阵。
 
 \begin{figure}[H]
 \centering

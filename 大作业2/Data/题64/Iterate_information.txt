@@ -1,0 +1,27 @@
+iterations: 104
+          funcCount: 105
+           stepsize: 0.0031
+       cgiterations: 134
+      firstorderopt: 6.4518e-07
+          algorithm: 'trust-region'
+            message: 'Local minimum found.??Optimization completed because the size of the gradient is less than?the default value of the optimality tolerance.??Stopping criteria details:??Optimization completed: The first-order optimality measure, 6.451780e-07, ?is less than options.OptimalityTolerance = 1.000000e-06, and no negative/zero?curvature is detected in the trust-region model.??Optimization Metric                                        Options?relative first-order optimality =   6.45e-07   OptimalityTolerance =   1e-06 (default)'
+    constrviolation: []
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+   104        4.41532e-13     0.00310637       6.45e-07           2
+
+
++++++++++++++++++++++++++++++++++++++
+iterations: 30
+        funcCount: 6834
+         stepsize: 238.5221
+     lssteplength: 1
+    firstorderopt: 1.6284e+03
+        algorithm: 'quasi-newton'
+          message: 'Local minimum found.??Optimization completed because the size of the gradient is less than?the default value of the optimality tolerance.??Stopping criteria details:??Optimization completed: The first-order optimality measure, 3.250348e-07, is less ?than options.OptimalityTolerance = 1.000000e-06.??Optimization Metric                                          Options?relative norm(gradient) =   3.25e-07             OptimalityTolerance =   1e-06 (default)'
+
+
+                                                        First-order 
+ Iteration  Func-count       f(x)        Step-size       optimality
+    30        6834          25584.6              1       1.63e+03  
