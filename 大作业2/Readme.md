@@ -1,6 +1,6 @@
 # 后记
 
-
+> 最终版作业是这个：https://github.com/Theigrams/Mathematical-optimization/blob/master/%E5%A4%A7%E4%BD%9C%E4%B8%9A2/Report.pdf
 
 总算写完了这次大作业，我自认为是写得非常用心了，之前以为题目都做过，再增添几句话就行，没想到这一修改就是两三个星期，期间每一道题都查阅了很多资料，尤其是Stephen Boyd的Convex Optimization，给我提供了一个全新的思路以坐标变换的角度去审视最速下降法和牛顿法，然后是Alfio Quarteroni的Scientific Computing with MATLAB and Octave,书的排版格式很美观，插图也很漂亮，内容详尽，配合大量习题，还有MATLAB代码。
 
