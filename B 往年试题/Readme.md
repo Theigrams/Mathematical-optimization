@@ -21,3 +21,5 @@
 但其他部分最好先自己做，最后再来对答案，然后最优化是一个应用性很强的学科，建议学习时把书上的算法都手动编程实现一遍，用 MATLAB 还是不难的。
 
 如果用 Python 的话，可以参考 [用Python做科学计算](https://paper.seebug.org/papers/old_sebug_paper/books/scipydoc/index.html#python)。
+
+> PS：我作业里的答案可能有的地方写错了，经供参考，自己一定要对照标准答案。
