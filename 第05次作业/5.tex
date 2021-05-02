@@ -1,0 +1,151 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{booktabs}
+\title{\heiti 最优化第五次作业}
+\author{\kaishu 张晋15091060}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[2.24] 原始问题如下:
+
+\begin{alignat}{2}
+min \quad & x_1-x_2 \nonumber\\
+\mbox{s.t.}\quad
+&x_1\leq-1\nonumber\\
+&x_2\geq 1\nonumber\\
+&x_1\geq 0\nonumber\\
+&x_2\geq 0
+\end{alignat}
+
+其对偶问题如下:
+
+\begin{alignat}{2}
+min \quad & -\lambda_1+\lambda_2 \nonumber\\
+\mbox{s.t.}\quad
+&\lambda_1\leq 0\nonumber\\
+&\lambda_2\geq 0\nonumber\\
+&\lambda_1\leq 1\nonumber\\
+&\lambda_2\leq -1
+\end{alignat}
+
+显然，两个问题的可行解都不存在.
+
+\clearpage
+\item[2.25]
+\textbf{充分性:}若存在$\bm{\lambda}\geq \bm{0}$，使得$\bm{c}^T+\bm{\lambda}^T\bm{A}= \bm{0}$成立,则有\[\bm{c}^T\bm{x}+\bm{\lambda}^T\bm{A}\bm{x}= \bm{0}\]
+显然，如果$\bm{A}\bm{x}\leq \bm{0}$必然可以推出$\bm{c}^T\bm{x}\geq \bm{0}$.
+
+\textbf{必要性:}对于线性规划:
+\begin{alignat}{2}
+min \quad & \bm{c}^T\bm{x} \nonumber\\
+\mbox{s.t.}\quad &
+\bm{A}\bm{x}\leq \bm{0} \nonumber\\
+& \bm{x}\in \mathbb{R}^n
+\end{alignat}
+
+其对偶问题为:
+\begin{alignat}{2}
+max \quad & \bm{0} \nonumber\\
+\mbox{s.t.}\quad &
+\bm{\lambda}^T\bm{A}=\bm{c}^T \nonumber\\
+&\bm{\lambda} \leq \bm{0}
+\end{alignat}
+
+对原始问题而言,显然$\bm{x}=\bm{0}$是一个可行解,且因为$\bm{c}^T\bm{x} \geq \bm{0}$,故原问题有下界,且下界在$\bm{x}=\bm{0}$处取到，根据弱对偶定理，该对偶问题也有解，则必存在$\bm{\lambda}\leq \bm{0}$，使得$\bm{\lambda}^T\bm{A}=\bm{c}^T$成立,那么将$\bm{\lambda}$取相反数，即可得$\bm{\lambda}\geq \bm{0}$满足$\bm{c}^T+\bm{\lambda}^T\bm{A}= \bm{0}$.
+
+
+\textbf{几何解释:}
+令$\bm{A}=[\bm{a}_1^T,\bm{a}_1^T,\cdots,\bm{a}_m^T]^T,\quad\bm{a}_i^T \in \mathbb{R}^n$
+
+$\bm{A}\bm{x}\leq\bm{0}$是$n$维空间中由$m$个过原点的超平面$\bm{a}_1^T\bm{x}=\bm{0},\cdots,\bm{a}_m^T\bm{x}=\bm{0}$围成的凸多面锥体，而$\bm{c}^T\bm{x}\geq \bm{0}$是一个过原点的闭半空间,从直观角度来说,一个凸多面体锥很难包含一个闭半空间,除非这个凸多面体锥也展成了一张超平面，且与那个超平面重合.
+
+在这种情况下,$rank(A)=1$,即整个向量$\bm{a}_1^T,\bm{a}_1^T,\cdots,\bm{a}_m^T$都能被$\bm{c}^T$线性表出,即存在$\mu_1,\mu_2,\cdots,\mu_m$,使得
+$\mu_1\bm{a}_1^T=\mu_2\bm{a}_2^T=\cdots=\mu_m\bm{a}_m^T=\bm{c}^T$
+
+\clearpage
+\item[2.27]
+\[P(\bm{x},\bm{y})=\bm{x}^T\bm{A}\bm{y}=\sum^{m}_{i=1}\sum^{n}_{j=1}x_iy_ja_{ij}\]
+\begin{enumerate}
+\item[(a)]
+\[P(\bm{x},\bm{y})=\sum^{n}_{j=1}y_j\sum^{m}_{i=1}x_ia_{ij}\geq \alpha\sum^{n}_{j=1}y_j=\alpha\]
+
+\item[(b)]
+原约束转化如下:
+
+\begin{alignat}{2}
+max \quad & \alpha=[1,\bm{0}]\begin{bmatrix}
+   	\alpha\\
+    \bm{x}
+\end{bmatrix} \nonumber\\
+\mbox{s.t.}\quad &
+[\alpha,\bm{x}^T]\begin{bmatrix}
+   	0\\
+    \bm{1}\end{bmatrix}=\bm{1}\nonumber\\
+&[\alpha,\bm{x}^T]\begin{bmatrix}
+   	1\\
+    -\bm{A}\end{bmatrix}\leq  \bm{0}\nonumber\\
+& x_i\geq 0
+\end{alignat}
+
+该问题的对偶问题为:
+\begin{alignat}{2}
+min \quad & [1,\bm{0}]\begin{bmatrix}
+    	\beta\\
+    \bm{y}
+\end{bmatrix} \nonumber\\
+\mbox{s.t.}\quad &
+y_j\geq 0  \nonumber\\
+&[0,\bm{1}]\begin{bmatrix}
+   	\beta\\
+    \bm{y}^T
+\end{bmatrix}=\bm{1}\nonumber\\
+& [\bm{1},-\bm{A}]\begin{bmatrix}
+   	\beta\\
+    \bm{y}^T\end{bmatrix}\geq \bm{0}
+\end{alignat}
+化简即可得证.
+
+\item[(c)] 由于问题(5)(6)属于线性规划，由第一题知(5)有解且(6)有界,根据弱对偶性原理，可知(5)必有最优解,根据强对偶性原理，两个问题都有最优解且最优值相等.
+
+\item[(d)] 若1表示正面，2表示反面,则:
+\[\bm{A}=\begin{bmatrix}
+   	1&-1\\
+   	-1&1\end{bmatrix}\]
+
+解题(a)的线性规划:
+\begin{alignat}{2}
+max \quad & \alpha\nonumber\\
+\mbox{s.t.}\quad &
+x_1+x_2=1\nonumber\\
+&-x_1+x_2\geq \alpha\nonumber\\
+&x_1-x_2\geq \alpha\nonumber\\
+& x_1,x_2\geq 0
+\end{alignat}
+求得最优解为$\bm{x}=(0.5,0.5)$,最优值为0，可见该点即是平衡点.
+
+\item[(e)]
+\[\bm{A}=\begin{bmatrix}
+   	0&3&-1\\
+-3&0&3\\
+1&-3&0\end{bmatrix}\]
+
+解题(a)的线性规划:
+\begin{alignat}{2}
+max \quad & \alpha\nonumber\\
+\mbox{s.t.}\quad &
+x_1+x_2+x_3=1\nonumber\\
+&-3x_2+x_3\geq \alpha\nonumber\\
+&3x_1-3x_3\geq \alpha\nonumber\\
+&-x_1+3x_3\geq \alpha\nonumber\\
+& x_1,x_2,x_3\geq 0
+\end{alignat}
+求得最优解为$\bm{x}=(3/7,1/7,3/7)$,最优值为0，可见该点即是平衡点.
+\end{enumerate}
+\end{enumerate}
+\end{document}
+

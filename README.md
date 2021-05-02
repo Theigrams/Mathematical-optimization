@@ -1,4 +1,4 @@
-# Mathematical optimization
+# Mathematical optimization 2017 fall
 
  Course:   `数学系本科三年级《最优化理论与方法》`
 

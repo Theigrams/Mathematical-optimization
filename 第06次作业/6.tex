@@ -1,0 +1,286 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+
+\title{\heiti 最优化第六次作业}
+\author{\kaishu 张晋15091060}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[2.32] 原问题系数矩阵如下:
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{b}$\\
+	\midrule
+    {}    & 1     & 2     & 1     & 2     & 3 \\
+    {}    & 1     & 1     & 2     & 4     & 5 \\
+    $\bm{c}^T$    & 2     & 3     & 2     & 2& 0    \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 2     & 1     & 2     & 3 \\
+    {}    & 0     & -1     & 1     & 2     & 2 \\
+    $\bm{c}^T$    & 2     & 3     & 2     & 2& 0    \\ 
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & \boxed{1}     & 3     & 0    & 0    & 1 \\
+    {}    & 0     & -1     & 1     & 2     & 2 \\
+  $\bm{c}^T$    & 2     & 3     & 2     & 2& 0    \\ 
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 3     & 0    & 0    & 1 \\
+    {}    & 0     & -1     & \boxed{1}     & 2     & 2 \\
+    $\bm{r}^T$    & 0     & -3     & 2     & 2& -2    \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & 3     & 0    & 0    & 1 \\
+    {}    & 0     & -1     & 1    & \boxed{2}     & 2 \\
+    $\bm{r}^T$    & 0     & -1     & 0     & -2& -6 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+    {}    & 1     & \boxed{3}     & 0    & 0    & 1 \\
+    {}    & 0     & -1/2     & 1/2    & 1     & 1 \\
+    $\bm{r}^T$    & 0     & -2     & 1     & 0& -4 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{B}^{-1}\bm{b}$\\
+	\midrule
+       {}    & 1/3   & 1     & 0     & 0     & 1/3 \\
+    {}    & 1/6   & 0     & 1/2   & 1     & 7/6 \\
+   $\bm{r}^T$    & 2/3   & 0     & 1     & 0     & −10/3 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+故得到该问题的最优解为$\bm{x}=(0,\dfrac{1}{3},0,\dfrac{7}{6})^T$，最优值为$10/3$
+
+\[\bm{B}=
+\begin{bmatrix}
+2 &2\\
+1& 4
+\end{bmatrix},\qquad
+\bm{B}^{-1}=\dfrac{1}{6}
+\begin{bmatrix}
+4 &-2\\
+-1& 2
+\end{bmatrix}\]
+
+\[\bm{x}_B=\bm{B}^{-1}
+\begin{bmatrix}
+1\\
+8
+\end{bmatrix}=
+\begin{bmatrix}
+-2\\
+5/2
+\end{bmatrix},\qquad
+z=\bm{c}_B^T\bm{x}_B=-1\]
+
+可得新单纯形表:
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$\bm{x}^{B}$\\
+	\midrule
+       {}    & 1/3   & 1     & 0     & 0     & -2 \\
+    {}    & 1/6   & 0     & 1/2   & 1     & 5/2 \\
+   $\bm{r}^T$    & 2/3   & 0     & 1     & 0     & 1 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+由于$\dfrac{1}{3}x_1+x_2=-2$没有非负解，故无可行解.
+
+\item[2.34]
+\begin{enumerate}
+\item 对偶单纯形表如下:
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{x}^{B}$\\
+	\midrule
+    {}    & -2    & -1    & \boxed{-4}    & 0     & 1     & 0     & -2 \\
+   {}   & -2    & -2    & 0     & -4    & 0     & 1     & -3 \\
+    $\bm{r}^T$     & 12    & 8     & 16    & 12    & 0     & 0     & 0 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{x}^{B}$\\
+	\midrule
+   {}    & 1/2   & 1/4   & 1     & 0     & -1/4  & 0     & 1/2 \\
+    {}    & \boxed{-2}    & -2    & 0     & -4    & 0     & 1     & -3 \\
+    $\bm{r}^T$    & 4     & 4     & 0     & 12    & 4     & 0     & -8 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{x}^{B}$\\
+	\midrule
+    {}   & 0     &\boxed{-1/4}  & 1     & -1    & -1/4  & 1/4   & -1/4 \\
+    {}    & 1     & 1     & 0     & 2     & 0     & -1/2  & 3/2 \\
+      $\bm{r}^T$     & 0     & 0     & 0     & 4     & 4     & 2     & -14 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ccccccccc}
+	\toprule
+	{}&$x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$\bm{x}^{B}$\\
+	\midrule
+     {}    & 0     & 1     & -4    & 4     & 1     & -1    & 1 \\
+     {}    & 1     & 0     & 4     & -2    & -1    & 1/2   & 1/2 \\
+       $\bm{r}^T$     & 0     & 0     & 0     & 4     & 4     & 2     & -14 \\
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+故得到该问题的最优解为$\bm{x}=(\dfrac{1}{2},1,0,0,0,0)^T$，最优值为$14$.
+
+\item 其对偶问题如下:
+\begin{alignat}{2}
+max \quad & -2\lambda_1-3\lambda_2 \nonumber\\
+\mbox{s.t.}\quad
+&-2\lambda_1-2\lambda_2 \leq 12\nonumber\\
+&-\lambda_1-2\lambda_2\leq 8\nonumber\\
+&-4\lambda_1 \leq 16\nonumber\\
+&-4\lambda_2 \leq 12\nonumber\\
+&\lambda_1,\lambda_2 \leq 0
+\end{alignat}
+
+由图像可知，其最优解为$\bm{\lambda}=(-4,-2)^T$,最优值为$14$.
+
+
+\item 由$\bm{r}^T_N=\bm{c}^T_N-\bm{\lambda}^T\bm{N}$得:$\qquad\bm{\lambda}=-\bm{r}_N$，观察表中的$(r_5,r_6)$即可得到$\lambda_1=(0,0),\quad \lambda_2=(-4,0),\quad \lambda_1=(-4,-2),\quad \lambda_1=(-4,-2),\quad $
+可见单纯形乘子沿着对偶问题的基本可行解移动，最后移动到最优点.
+
+\includepdfmerge{fig.pdf}
+\end{enumerate}
+\item[2.36]
+\item 原问题转化为约束问题:
+\begin{alignat}{2}
+max \quad & 2x_1+2x_2+3x_3 \nonumber\\
+\mbox{s.t.}\quad
+&x_1+2x_2+2x_3\leq 12\nonumber\\
+&2x_1+4x_2+x_3\leq f\nonumber\\
+&x_i \geq 0 \qquad(i=1,2,3)
+\end{alignat}
+
+其对偶问题如下:
+\begin{alignat}{2}
+min \quad &12\lambda_1+f\lambda_2 \nonumber\\
+\mbox{s.t.}\quad
+&\lambda_1,\lambda_2 \geq 0\nonumber\\
+&\lambda_1+2\lambda_2 \geq 2\nonumber\\
+&2\lambda_1+4\lambda_2 \geq 2\nonumber\\
+&2\lambda_1+\lambda_2\geq 3
+\end{alignat}
+
+由图解法可以看出：
+\[\bm{\lambda} = \begin{cases}
+L_4,& f=0\\
+(0,3),& f\in (0,6)\\
+L_3,& f=6\\
+(4/3,1/3),& f \in (6,24)\\
+L_2,&f=24\\
+(2,0),& f \in (24,\infty)\\
+\lambda_2=\infty,& f<0
+\end{cases}\]
+
+即:
+\[\lambda_2(f) = \begin{cases}
+[3,\infty),& f=0\\
+3,& f\in (0,6)\\
+[1/3,3],& f=6\\
+1/3,& f \in (6,24)\\
+[0,1/3],&f=24\\
+0,& f \in (24,\infty)\\
+\infty,& f<0
+\end{cases},\qquad
+z(f) = \begin{cases}
+3f,& f\in [0,6)\\
+f/3+16,& f \in [6,24)\\
+24,& f \in [24,\infty)\\
+\text{无解},& f<0
+\end{cases}\]
+
+\item
+设棉花的需求量为$T\geq s$,则
+\[\Delta Z=T/6-(T-s)/6-s/12=s/12\]
+\[\pi(s) = \begin{cases}
+z(f)+s/12,& s \leq T\\
+z(f)+T/12,& s > T\\
+\end{cases}\]
+\includepdfmerge{f6.pdf}
+\includepdfmerge{f7.pdf}
+\end{enumerate}
+
+
+\end{document}
